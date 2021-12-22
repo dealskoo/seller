@@ -1,6 +1,6 @@
 preset: package
 
-namespace: Dealskoo\SellersCenter
+namespace: Dealskoo\Seller
 user-auth-provider: App\User
 
 paths:
@@ -15,13 +15,13 @@ migration:
   prefix: ''
 
 console:
-  namespace: Dealskoo\SellersCenter\Console
+  namespace: Dealskoo\Seller\Console
 
 model:
-  namespace: Dealskoo\SellersCenter
+  namespace: Dealskoo\Seller
 
 provider:
-  namespace: Dealskoo\SellersCenter\Providers
+  namespace: Dealskoo\Seller\Providers
 
 testing:
-  namespace: Dealskoo\SellersCenter\Tests
+  namespace: Dealskoo\Seller\Tests

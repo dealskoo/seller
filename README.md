@@ -1,2 +1,2 @@
-# Sellers Center
+# Seller Center
 

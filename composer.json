@@ -1,22 +1,22 @@
 {
-    "name": "dealskoo/sellers-center",
-    "description": "Sellers Center Panel",
-    "homepage": "https://github.com/dealskoo/sellers-center",
+    "name": "dealskoo/seller",
+    "description": "Seller Center Panel",
+    "homepage": "https://github.com/dealskoo/seller",
     "keywords": [
         "Laravel",
-        "Sellers Center Panel",
+        "Seller Center Panel",
         "Dealskoo"
     ],
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Dealskoo\\SellersCenter\\": "src/"
+            "Dealskoo\\Seller\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dealskoo\\SellersCenter\\Tests\\": "tests/"
+            "Dealskoo\\Seller\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -42,7 +42,9 @@
     },
     "extra": {
         "laravel": {
-            "providers": [],
+            "providers": [
+                "Dealskoo\\Seller\\Providers\\SellerServiceProvider"
+            ],
             "aliases": {
             }
         }
