@@ -1,7 +1,11 @@
 {
     "name": "dealskoo/seller",
     "description": "Seller Center Panel",
-    "homepage": "https://github.com/dealskoo/seller",
+    "homepage": "https://www.dealskoo.com",
+    "support": {
+        "issues": "https://github.com/dealskoo/seller/issues",
+        "source": "https://github.com/dealskoo/seller"
+    },
     "keywords": [
         "Laravel",
         "Seller Center Panel",
@@ -48,5 +52,8 @@
             "aliases": {
             }
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
