@@ -9,7 +9,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function create()
     {
-
+        return view('seller::auth.login');
     }
 
     public function store()
