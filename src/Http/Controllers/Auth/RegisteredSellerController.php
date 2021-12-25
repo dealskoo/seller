@@ -9,7 +9,7 @@ class RegisteredSellerController extends Controller
 {
     public function create()
     {
-
+        return view('seller::auth.register');
     }
 
     public function store()

@@ -13,7 +13,7 @@ class SellerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__ . '/../../config/seller.php', 'seller');
     }
 
     /**
@@ -28,5 +28,8 @@ class SellerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../config/seller.php' => config_path('seller.php')
         ], 'config');
+        $this->publishes([
+            __DIR__ . '/../../public' => public_path('vendor/seller')
+        ], 'public');
     }
 }
