@@ -20,6 +20,8 @@ Route::prefix(config('seller.route.prefix'))->name('seller.')->group(function ()
     });
 
     Route::middleware([])->group(function () {
-
+        Route::get('/', function () {
+            return view('seller::dashboard');
+        })->name('dashboard');
     });
 });
