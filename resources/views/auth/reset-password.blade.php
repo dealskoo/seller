@@ -3,18 +3,21 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>Log In | {{ config('seller.title') }} - {{ config('app.name') }}</title>
+    <title>Recover Password | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
     <!-- App css -->
     <link href="/vendor/seller/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="/vendor/seller/css/app-creative.min.css" rel="stylesheet" type="text/css" id="light-style"/>
     <link href="/vendor/seller/css/app-creative-dark.min.css" rel="stylesheet" type="text/css" id="dark-style"/>
+
 </head>
 
-<body class="pb-0" data-layout-config='{"darkMode":false}'>
+<body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}'>
 
 <div class="auth-fluid">
     <!--Auth fluid left content -->
@@ -33,8 +36,9 @@
                 </div>
 
                 <!-- title-->
-                <h4 class="mt-0">Sign In</h4>
-                <p class="text-muted mb-4">Enter your email address and password to access account.</p>
+                <h4 class="mt-0">Reset Password</h4>
+                <p class="text-muted mb-4">Enter your email address and we'll send you an email with instructions to
+                    reset your password.</p>
 
                 <!-- form -->
                 <form action="#">
@@ -43,29 +47,17 @@
                         <input class="form-control" type="email" id="emailaddress" required=""
                                placeholder="Enter your email">
                     </div>
-                    <div class="mb-3">
-                        <a href="{{ route('seller.password.request') }}" class="text-muted float-end"><small>Forgot your
-                                password?</small></a>
-                        <label for="password" class="form-label">Password</label>
-                        <input class="form-control" type="password" required="" id="password"
-                               placeholder="Enter your password">
-                    </div>
-                    <div class="mb-3">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
-                        </div>
-                    </div>
-                    <div class="d-grid mb-0 text-center">
-                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-login"></i> Log In</button>
+                    <div class="mb-0 text-center d-grid">
+                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-lock-reset"></i> Reset Password
+                        </button>
                     </div>
                 </form>
                 <!-- end form-->
 
                 <!-- Footer-->
                 <footer class="footer footer-alt">
-                    <p class="text-muted">Don't have an account? <a href="{{ route('seller.register') }}"
-                                                                    class="text-muted ms-1"><b>Sign Up</b></a></p>
+                    <p class="text-muted">Back to <a href="{{ route('seller.login') }}" class="text-muted ms-1"><b>Log
+                                In</b></a></p>
                 </footer>
 
             </div> <!-- end .card-body -->
