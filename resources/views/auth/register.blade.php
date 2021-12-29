@@ -1,6 +1,6 @@
 @extends('seller::layouts.auth')
 
-@section('title','Register')
+@section('title',trans('seller::auth.sign_up'))
 
 @section('body')
     <div class="align-items-center d-flex h-100">
@@ -21,20 +21,20 @@
             <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute</p>
 
             <!-- form -->
-            <form action="#">
+            <form action="{{ route('seller.register') }}" method="post">
                 <div class="mb-3">
                     <label for="fullname" class="form-label">Full Name</label>
                     <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="emailaddress" class="form-label">Email address</label>
-                    <input class="form-control" type="email" id="emailaddress" required
-                           placeholder="Enter your email">
+                    <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
+                    <input class="form-control" type="email" id="email" required
+                           placeholder="{{ trans('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">{{ trans('seller::auth.password') }}</label>
                     <input class="form-control" type="password" required id="password"
-                           placeholder="Enter your password">
+                           placeholder="{{ trans('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
@@ -44,7 +44,8 @@
                     </div>
                 </div>
                 <div class="mb-0 d-grid text-center">
-                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-account-circle"></i> Sign Up
+                    <button class="btn btn-primary" type="submit"><i
+                            class="mdi mdi-account-circle"></i> {{ trans('seller::auth.sign_up') }}
                     </button>
                 </div>
             </form>
@@ -52,9 +53,10 @@
 
             <!-- Footer-->
             <footer class="footer footer-alt">
-                <p class="text-muted">Already have account? <a href="{{ route('seller.login') }}"
-                                                               class="text-muted ms-1"><b>Log
-                            In</b></a></p>
+                <p class="text-muted">{{ trans('seller::auth.already_have_account') }} <a
+                        href="{{ route('seller.login') }}"
+                        class="text-muted ms-1"><b>{{ trans('seller::auth.log_in') }}</b></a>
+                </p>
             </footer>
 
         </div> <!-- end .card-body -->

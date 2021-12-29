@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>@yield('title') | {{ config('seller.title') }} - {{ config('app.name') }}</title>
+    <title>@yield('title') | {{ trans('seller::auth.title') }} - {{ config('app.name') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">

@@ -1,6 +1,6 @@
 @extends('seller::layouts.auth')
 
-@section('title','Recover Password')
+@section('title',trans('seller::auth.recover_password'))
 
 @section('body')
     <div class="align-items-center d-flex h-100">
@@ -17,19 +17,19 @@
             </div>
 
             <!-- title-->
-            <h4 class="mt-0">Reset Password</h4>
-            <p class="text-muted mb-4">Enter your email address and we'll send you an email with instructions to
-                reset your password.</p>
+            <h4 class="mt-0">{{ trans('seller::auth.reset_password') }}</h4>
+            <p class="text-muted mb-4">{{ trans('seller::auth.reset_password_tip') }}</p>
 
             <!-- form -->
-            <form action="#">
+            <form action="{{ route('seller.password.email') }}" method="post">
                 <div class="mb-3">
-                    <label for="emailaddress" class="form-label">Email address</label>
-                    <input class="form-control" type="email" id="emailaddress" required=""
-                           placeholder="Enter your email">
+                    <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
+                    <input class="form-control" type="email" id="email" required=""
+                           placeholder="{{ trans('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-0 text-center d-grid">
-                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-lock-reset"></i> Reset Password
+                    <button class="btn btn-primary" type="submit"><i
+                            class="mdi mdi-lock-reset"></i> {{ trans('seller::auth.reset_password') }}
                     </button>
                 </div>
             </form>
@@ -37,8 +37,9 @@
 
             <!-- Footer-->
             <footer class="footer footer-alt">
-                <p class="text-muted">Back to <a href="{{ route('seller.login') }}" class="text-muted ms-1"><b>Log
-                            In</b></a></p>
+                <p class="text-muted">{{ trans('seller::auth.back_to') }} <a href="{{ route('seller.login') }}"
+                                                                             class="text-muted ms-1"><b>{{ trans('seller::auth.log_in') }}</b></a>
+                </p>
             </footer>
 
         </div> <!-- end .card-body -->

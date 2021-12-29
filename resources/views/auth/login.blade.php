@@ -1,6 +1,6 @@
 @extends('seller::layouts.auth')
 
-@section('title','Log In')
+@section('title',trans('seller::auth.log_in'))
 
 @section('body')
     <div class="align-items-center d-flex h-100">
@@ -17,39 +17,42 @@
             </div>
 
             <!-- title-->
-            <h4 class="mt-0">Sign In</h4>
-            <p class="text-muted mb-4">Enter your email address and password to access account.</p>
+            <h4 class="mt-0">{{ trans('seller::auth.sign_in') }}</h4>
+            <p class="text-muted mb-4">{{ trans('seller::auth.sign_in_tip') }}</p>
 
             <!-- form -->
-            <form action="#">
+            <form action="{{ route('seller.login') }}" method="post">
                 <div class="mb-3">
-                    <label for="emailaddress" class="form-label">Email address</label>
-                    <input class="form-control" type="email" id="emailaddress" required=""
-                           placeholder="Enter your email">
+                    <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
+                    <input class="form-control" type="email" id="email" required=""
+                           placeholder="{{ trans('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-3">
-                    <a href="{{ route('seller.password.request') }}" class="text-muted float-end"><small>Forgot your
-                            password?</small></a>
-                    <label for="password" class="form-label">Password</label>
+                    <a href="{{ route('seller.password.request') }}"
+                       class="text-muted float-end"><small>{{ trans('seller::auth.forgot_your_password') }}</small></a>
+                    <label for="password" class="form-label">{{ trans('seller::auth.password') }}</label>
                     <input class="form-control" type="password" required="" id="password"
-                           placeholder="Enter your password">
+                           placeholder="{{ trans('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                        <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                        <input type="checkbox" class="form-check-input" id="checkbox-remember">
+                        <label class="form-check-label"
+                               for="checkbox-remember">{{ trans('seller::auth.remember_me') }}</label>
                     </div>
                 </div>
                 <div class="d-grid mb-0 text-center">
-                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-login"></i> Log In</button>
+                    <button class="btn btn-primary" type="submit"><i
+                            class="mdi mdi-login"></i> {{ trans('seller::auth.log_in') }}</button>
                 </div>
             </form>
             <!-- end form-->
 
             <!-- Footer-->
             <footer class="footer footer-alt">
-                <p class="text-muted">Don't have an account? <a href="{{ route('seller.register') }}"
-                                                                class="text-muted ms-1"><b>Sign Up</b></a></p>
+                <p class="text-muted">{{ trans('seller::auth.do_not_have_an_account') }} <a
+                        href="{{ route('seller.register') }}"
+                        class="text-muted ms-1"><b>{{ trans('seller::auth.sign_up') }}</b></a></p>
             </footer>
 
         </div> <!-- end .card-body -->
