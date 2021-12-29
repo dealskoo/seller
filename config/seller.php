@@ -9,4 +9,14 @@ return [
     'logo_sm' => '/vendor/seller/images/logo_sm.svg',
     'logo_sm_dark' => '/vendor/seller/images/logo_sm_dark.svg',
     'copyright' => '2014 - ' . date('Y') . ' ' . config('app.name'),
+    'footer_menus' => [[
+        'name' => 'about',
+        'url' => 'seller.dashboard'
+    ], [
+        'name' => 'support',
+        'url' => 'seller.register'
+    ], [
+        'name' => 'contact_us',
+        'url' => 'seller.login'
+    ]],
 ];
