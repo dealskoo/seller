@@ -16,5 +16,10 @@ return [
     'back_to' => 'Back to',
     'do_not_have_an_account' => "Don't have an account?",
     'sign_up' => 'Sign Up',
-    'already_have_account' => 'Already have account?'
+    'sign_up_tip' => "Don't have an account? Create your account, it takes less than a minute",
+    'already_have_account' => 'Already have account?',
+    'full_name' => 'Full Name',
+    'full_name_placeholder' => 'Enter your name',
+    'i_accept' => 'I accept',
+    'terms_and_conditions' => 'Terms and Conditions',
 ];

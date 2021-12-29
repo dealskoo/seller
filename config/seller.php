@@ -19,4 +19,5 @@ return [
         'name' => 'contact_us',
         'url' => 'seller.login'
     ]],
+    'terms_and_conditions_url' => 'seller.login',
 ];

@@ -17,14 +17,15 @@
             </div>
 
             <!-- title-->
-            <h4 class="mt-0">Free Sign Up</h4>
-            <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute</p>
+            <h4 class="mt-0">{{ trans('seller::auth.sign_up') }}</h4>
+            <p class="text-muted mb-4">{{ trans('seller::auth.sign_up_tip') }}</p>
 
             <!-- form -->
             <form action="{{ route('seller.register') }}" method="post">
                 <div class="mb-3">
-                    <label for="fullname" class="form-label">Full Name</label>
-                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                    <label for="full_name" class="form-label">{{ trans('seller::auth.full_name') }}</label>
+                    <input class="form-control" type="text" id="full_name"
+                           placeholder="{{ trans('seller::auth.full_name_placeholder') }}" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
@@ -38,9 +39,10 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox-signup">
-                        <label class="form-check-label" for="checkbox-signup">I accept <a
-                                href="javascript: void(0);" class="text-muted">Terms and Conditions</a></label>
+                        <input type="checkbox" class="form-check-input" checked id="checkbox-signup">
+                        <label class="form-check-label" for="checkbox-signup">{{ trans('seller::auth.i_accept') }} <a
+                                href="{{ route(config('seller.terms_and_conditions_url')) }}" target="_blank"
+                                class="text-muted">{{ trans('seller::auth.terms_and_conditions') }}</a></label>
                     </div>
                 </div>
                 <div class="mb-0 d-grid text-center">
