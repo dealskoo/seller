@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class PasswordResetLinkController extends Controller
 {
-    public function create(Request $request)
+    public function create()
     {
-        return view('seller::auth.reset-password', ['request' => $request]);
+        return view('seller::auth.forgot-password');
     }
 
     public function store()

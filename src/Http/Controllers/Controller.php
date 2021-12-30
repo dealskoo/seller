@@ -13,13 +13,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function __construct()
-    {
-//        $this->middleware('auth:seller');
-    }
-
     public function guard()
     {
-//        return Auth::guard('seller');
+        return Auth::guard('seller');
     }
 }

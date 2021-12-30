@@ -22,4 +22,6 @@ return [
     'full_name_placeholder' => 'Enter your name',
     'i_accept' => 'I accept',
     'terms_and_conditions' => 'Terms and Conditions',
+    'failed' => 'These credentials do not match our records.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 ];
