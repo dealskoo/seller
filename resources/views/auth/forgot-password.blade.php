@@ -18,10 +18,19 @@
 
             <!-- title-->
             <h4 class="mt-0">{{ trans('seller::auth.reset_password') }}</h4>
-            <p class="text-muted mb-4">{{ trans('seller::auth.reset_password_tip') }}</p>
+            <div class="mb-4">
+                @if(empty($errors->all()))
+                    <p class="text-muted mb-0">{{ trans('seller::auth.reset_password_tip') }}</p>
+                @else
+                    @foreach($errors->all() as $error)
+                        <p class="text-danger mb-0">{{ $error }}</p>
+                    @endforeach
+                @endif
+            </div>
 
             <!-- form -->
             <form action="{{ route('seller.password.email') }}" method="post">
+                @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
                     <input class="form-control" type="email" id="email" required=""

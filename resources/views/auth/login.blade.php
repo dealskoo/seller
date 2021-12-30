@@ -18,25 +18,35 @@
 
             <!-- title-->
             <h4 class="mt-0">{{ trans('seller::auth.sign_in') }}</h4>
-            <p class="text-muted mb-4">{{ trans('seller::auth.sign_in_tip') }}</p>
+            <div class="mb-4">
+                @if(empty($errors->all()))
+                    <p class="text-muted mb-0">{{ trans('seller::auth.sign_in_tip') }}</p>
+                @else
+                    @foreach($errors->all() as $error)
+                        <p class="text-danger mb-0">{{ $error }}</p>
+                    @endforeach
+                @endif
+            </div>
 
             <!-- form -->
             <form action="{{ route('seller.login') }}" method="post">
+                @csrf
+
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
-                    <input class="form-control" type="email" id="email" required=""
+                    <input class="form-control" type="email" id="email" name="email" required=""
                            placeholder="{{ trans('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <a href="{{ route('seller.password.request') }}"
                        class="text-muted float-end"><small>{{ trans('seller::auth.forgot_your_password') }}</small></a>
                     <label for="password" class="form-label">{{ trans('seller::auth.password') }}</label>
-                    <input class="form-control" type="password" required="" id="password"
+                    <input class="form-control" type="password" required="" id="password" name="password"
                            placeholder="{{ trans('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox-remember">
+                        <input type="checkbox" class="form-check-input" id="checkbox-remember" name="remember">
                         <label class="form-check-label"
                                for="checkbox-remember">{{ trans('seller::auth.remember_me') }}</label>
                     </div>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
 
-    Route::middleware(['guest'])->group(function () {
+    Route::middleware(['guest:seller'])->group(function () {
         Route::get('/', function () {
             return redirect(\route('seller.dashboard'), 301);
         });

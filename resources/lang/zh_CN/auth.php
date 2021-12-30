@@ -22,4 +22,6 @@ return [
     'full_name_placeholder' => '请输入姓名',
     'i_accept' => '我同意',
     'terms_and_conditions' => '《用户协议》',
+    'failed' => '邮箱地址或密码错误。',
+    'throttle' => '登录尝试次数过多，请在 :seconds 秒后重试。',
 ];
