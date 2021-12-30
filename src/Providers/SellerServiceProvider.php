@@ -23,10 +23,20 @@ class SellerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+
+            ]);
+        }
+
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'seller');
+
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'seller');
+
         $this->publishes([
             __DIR__ . '/../../config/seller.php' => config_path('seller.php')
         ], 'config');
@@ -36,5 +46,6 @@ class SellerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/seller'),
         ], 'lang');
+
     }
 }

@@ -220,7 +220,7 @@
                                                  class="rounded-circle">
                                         </span>
                                 <span>
-                                            <span class="account-user-name">Dominic Keller</span>
+                                            <span class="account-user-name">{{ Auth::user()->name }}</span>
                                             <span class="account-position">Founder</span>
                                         </span>
                             </a>
@@ -257,11 +257,14 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{ route('seller.logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                   class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout me-1"></i>
                                     <span>Logout</span>
                                 </a>
-
+                                <form id="logout-form" action="{{ route('seller.logout') }}" method="POST"
+                                      class="d-none">@csrf</form>
                             </div>
                         </li>
 
@@ -316,7 +319,8 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="{{ asset('/vendor/seller/images/logo_sm.svg') }}"
+                                        <img class="d-flex me-2 rounded-circle"
+                                             src="{{ asset('/vendor/seller/images/logo_sm.svg') }}"
                                              alt="Generic placeholder image" height="32">
                                         <div class="w-100">
                                             <h5 class="m-0 font-14">Erwin Brown</h5>
@@ -328,7 +332,8 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="{{ asset('/vendor/seller/images/logo_sm.svg') }}"
+                                        <img class="d-flex me-2 rounded-circle"
+                                             src="{{ asset('/vendor/seller/images/logo_sm.svg') }}"
                                              alt="Generic placeholder image" height="32">
                                         <div class="w-100">
                                             <h5 class="m-0 font-14">Jacob Deo</h5>
