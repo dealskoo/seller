@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>@yield('title') | {{ trans('seller::auth.title') }} - {{ config('app.name') }}</title>
+    <title>@yield('title') | {{ __('seller::auth.title') }} - {{ config('app.name') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
@@ -27,10 +27,11 @@
     <!-- Auth fluid right content -->
     <div class="auth-fluid-right text-center">
         <div class="auth-user-testimonial">
-            <h2 class="mb-3">Welcome to the seller center!</h2>
-            <p class="lead"><i class="mdi mdi-format-quote-open"></i>Committed to providing sellers with marketing
-                solutions. <i
-                    class="mdi mdi-format-quote-close"></i>
+            <h2 class="mb-3">{{ __('Welcome to the seller center!') }}</h2>
+            <p class="lead">
+                <i class="mdi mdi-format-quote-open"></i>
+                {{ __('Committed to providing sellers with marketing solutions') }}
+                <i class="mdi mdi-format-quote-close"></i>
             </p>
             <p>
                 - {{ config('app.name') }}

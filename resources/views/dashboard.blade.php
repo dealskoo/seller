@@ -902,7 +902,7 @@
                         <div class="text-md-end footer-links d-none d-md-block">
                             @foreach(config('seller.footer_menus') as $menu)
                                 <a target="_blank" href="{{ route($menu['url']) }}">
-                                    {{ trans('seller::dashboard.'.$menu['name']) }}
+                                    {{ __('seller::dashboard.'.$menu['name']) }}
                                 </a>
                             @endforeach
                         </div>

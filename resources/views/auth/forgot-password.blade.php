@@ -1,6 +1,6 @@
 @extends('seller::layouts.auth')
 
-@section('title',trans('seller::auth.recover_password'))
+@section('title',__('seller::auth.recover_password'))
 
 @section('body')
     <div class="align-items-center d-flex h-100">
@@ -17,14 +17,18 @@
             </div>
 
             <!-- title-->
-            <h4 class="mt-0">{{ trans('seller::auth.reset_password') }}</h4>
+            <h4 class="mt-0">{{ __('seller::auth.reset_password') }}</h4>
             <div class="mb-4">
-                @if(empty($errors->all()))
-                    <p class="text-muted mb-0">{{ trans('seller::auth.reset_password_tip') }}</p>
+                @if(!empty(session('status')))
+                    <p class="text-danger mb-0">{{ session('status') }}</p>
                 @else
-                    @foreach($errors->all() as $error)
-                        <p class="text-danger mb-0">{{ $error }}</p>
-                    @endforeach
+                    @if(empty($errors->all()))
+                        <p class="text-muted mb-0">{{ __('seller::auth.reset_password_tip') }}</p>
+                    @else
+                        @foreach($errors->all() as $error)
+                            <p class="text-danger mb-0">{{ $error }}</p>
+                        @endforeach
+                    @endif
                 @endif
             </div>
 
@@ -32,14 +36,14 @@
             <form action="{{ route('seller.password.email') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
+                    <label for="email" class="form-label">{{ __('seller::auth.email_address') }}</label>
                     <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}"
-                           required=""
-                           placeholder="{{ trans('seller::auth.email_address_placeholder') }}">
+                           required="" autofocus
+                           placeholder="{{ __('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-0 text-center d-grid">
                     <button class="btn btn-primary" type="submit"><i
-                            class="mdi mdi-lock-reset"></i> {{ trans('seller::auth.reset_password') }}
+                            class="mdi mdi-lock-reset"></i> {{ __('seller::auth.reset_password') }}
                     </button>
                 </div>
             </form>
@@ -47,8 +51,8 @@
 
             <!-- Footer-->
             <footer class="footer footer-alt">
-                <p class="text-muted">{{ trans('seller::auth.back_to') }} <a href="{{ route('seller.login') }}"
-                                                                             class="text-muted ms-1"><b>{{ trans('seller::auth.log_in') }}</b></a>
+                <p class="text-muted">{{ __('seller::auth.back_to') }} <a href="{{ route('seller.login') }}"
+                                                                             class="text-muted ms-1"><b>{{ __('seller::auth.log_in') }}</b></a>
                 </p>
             </footer>
 
