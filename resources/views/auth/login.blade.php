@@ -47,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox-remember" name="remember">
+                        <input type="checkbox" class="form-check-input" id="checkbox-remember" name="remember" checked>
                         <label class="form-check-label"
                                for="checkbox-remember">{{ trans('seller::auth.remember_me') }}</label>
                     </div>

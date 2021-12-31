@@ -33,7 +33,8 @@
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ trans('seller::auth.email_address') }}</label>
-                    <input class="form-control" type="email" id="email" value="{{ old('email') }}" required=""
+                    <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}"
+                           required=""
                            placeholder="{{ trans('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-0 text-center d-grid">

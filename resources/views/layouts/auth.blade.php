@@ -15,7 +15,7 @@
           id="dark-style"/>
 </head>
 
-<body class="pb-0" data-layout-config='{"darkMode":false}'>
+<body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}'>
 
 <div class="auth-fluid">
     <!--Auth fluid left content -->
@@ -27,8 +27,9 @@
     <!-- Auth fluid right content -->
     <div class="auth-fluid-right text-center">
         <div class="auth-user-testimonial">
-            <h2 class="mb-3">I love the color!</h2>
-            <p class="lead"><i class="mdi mdi-format-quote-open"></i> It's a elegent templete. I love it very much! . <i
+            <h2 class="mb-3">Welcome to the seller center!</h2>
+            <p class="lead"><i class="mdi mdi-format-quote-open"></i>Committed to providing sellers with marketing
+                solutions. <i
                     class="mdi mdi-format-quote-close"></i>
             </p>
             <p>
