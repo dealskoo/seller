@@ -19,12 +19,16 @@
             <!-- title-->
             <h4 class="mt-0">{{ __('seller::auth.sign_in') }}</h4>
             <div class="mb-4">
-                @if(empty($errors->all()))
-                    <p class="text-muted mb-0">{{ __('seller::auth.sign_in_tip') }}</p>
+                @if(!empty(session('status')))
+                    <p class="text-success mb-0">{{ session('status') }}</p>
                 @else
-                    @foreach($errors->all() as $error)
-                        <p class="text-danger mb-0">{{ $error }}</p>
-                    @endforeach
+                    @if(empty($errors->all()))
+                        <p class="text-muted mb-0">{{ __('seller::auth.sign_in_tip') }}</p>
+                    @else
+                        @foreach($errors->all() as $error)
+                            <p class="text-danger mb-0">{{ $error }}</p>
+                        @endforeach
+                    @endif
                 @endif
             </div>
 

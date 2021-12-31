@@ -40,6 +40,12 @@
                            placeholder="{{ __('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
+                    <label for="password_confirmation"
+                           class="form-label">{{ __('seller::auth.confirm_password') }}</label>
+                    <input class="form-control" type="password" required id="password_confirmation"
+                           placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
+                </div>
+                <div class="mb-3">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" checked id="checkbox-signup">
                         <label class="form-check-label" for="checkbox-signup">{{ __('seller::auth.i_accept') }} <a
