@@ -31,4 +31,9 @@ class Seller extends Authentication implements MustVerifyEmail
     {
         $this->notify(new ResetSellerPassword($token));
     }
+
+    public function routeNotificationForMail($notification)
+    {
+        return [$this->email => $this->name];
+    }
 }
