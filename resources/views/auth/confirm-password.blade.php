@@ -1,0 +1,56 @@
+@extends('seller::layouts.auth')
+
+@section('title',__('seller::auth.confirm_password'))
+
+@section('body')
+    <div class="align-items-center d-flex h-100">
+        <div class="card-body">
+
+            <!-- Logo -->
+            <div class="auth-brand text-center text-lg-start">
+                <a href="{{ route('seller.dashboard') }}" class="logo-dark">
+                    <span><img src="{{ asset(config('seller.logo')) }}" alt="" height="40"></span>
+                </a>
+                <a href="{{ route('seller.dashboard') }}" class="logo-light">
+                    <span><img src="{{ asset(config('seller.logo_dark')) }}" alt="" height="40"></span>
+                </a>
+            </div>
+
+            <!-- User pic with title-->
+            <div class="text-center w-75 m-auto">
+                <img src="{{ Auth::user()->avatar_url }}" height="64" alt="user-image" class="rounded-circle shadow">
+                <h4 class="text-dark-50 text-center mt-3 fw-bold">Hi ! {{ Auth::user()->name }} </h4>
+                <div class="mb-4">
+                    @if(empty($errors->all()))
+                        <p class="text-muted mb-0">{{ __('This is a secure area of the application. Please confirm your password before continuing.') }}</p>
+                    @else
+                        @foreach($errors->all() as $error)
+                            <p class="text-danger mb-0">{{ $error }}</p>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+
+            <!-- form -->
+            <form method="POST" action="{{ route('seller.password.confirm') }}">
+                @csrf
+                <div class="mb-3">
+                    <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
+                    <input class="form-control" type="password" required="" id="password" name="password"
+                           min="{{ config('seller.password_length') }}" autofocus tabindex="1"
+                           placeholder="{{ __('seller::auth.password_placeholder') }}">
+                </div>
+                <div class="mb-0 text-center d-grid">
+                    <button class="btn btn-primary" type="submit">{{ __('Confirm') }}</button>
+                </div>
+            </form>
+            <!-- end form-->
+
+            <!-- Footer-->
+            <footer class="footer footer-alt">
+                <p class="text-muted">{{ config('seller.copyright') }}</p>
+            </footer>
+
+        </div> <!-- end .card-body -->
+    </div>
+@endsection

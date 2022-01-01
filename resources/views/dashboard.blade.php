@@ -216,7 +216,7 @@
                                id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                                aria-expanded="false">
                                         <span class="account-user-avatar">
-                                            <img src="{{ asset('/vendor/seller/images/logo_sm.svg') }}" alt="user-image"
+                                            <img src="{{ Auth::user()->avatar_url }}" alt="user-image"
                                                  class="rounded-circle">
                                         </span>
                                 <span>

@@ -32,4 +32,6 @@ return [
     'login' => '登录',
     'please_check_your_email' => '请检查你的邮箱',
     'a_email_has_been_send_to' => '邮件被发送到你的邮箱 <b>:email</b>. <br>请检查一封来自 :company 的邮件并点击重置密码链接重新设置您的密码.',
+    'verify_email' => '验证邮件地址',
+
 ];
