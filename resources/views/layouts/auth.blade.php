@@ -15,7 +15,7 @@
           id="dark-style"/>
 </head>
 
-<body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}'>
+<body class="authentication-bg pb-0">
 
 <div class="auth-fluid">
     <!--Auth fluid left content -->
