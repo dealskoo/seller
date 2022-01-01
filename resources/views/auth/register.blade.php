@@ -18,45 +18,53 @@
 
             <!-- title-->
             <h4 class="mt-0">{{ __('seller::auth.sign_up') }}</h4>
-            <p class="text-muted mb-4">{{ __('seller::auth.sign_up_tip') }}</p>
+            <div class="mb-4">
+                @if(empty($errors->all()))
+                    <p class="text-muted mb-0">{{ __('seller::auth.sign_up_tip') }}</p>
+                @else
+                    @foreach($errors->all() as $error)
+                        <p class="text-danger mb-0">{{ $error }}</p>
+                    @endforeach
+                @endif
+            </div>
+
 
             <!-- form -->
             <form action="{{ route('seller.register') }}" method="post">
                 @csrf
-
                 <div class="mb-3">
                     <label for="full_name" class="form-label">{{ __('seller::auth.full_name') }}</label>
                     <input class="form-control" type="text" id="full_name" name="name" value="{{ old('name') }}"
-                           placeholder="{{ __('seller::auth.full_name_placeholder') }}" required>
+                           placeholder="{{ __('seller::auth.full_name_placeholder') }}" required autofocus tabindex="1">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('seller::auth.email_address') }}</label>
                     <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}" required
-                           placeholder="{{ __('seller::auth.email_address_placeholder') }}">
+                           placeholder="{{ __('seller::auth.email_address_placeholder') }}" tabindex="2">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
-                    <input class="form-control" type="password" required id="password"
+                    <input class="form-control" type="password" required id="password" name="password" tabindex="3"
                            min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <label for="password_confirmation"
                            class="form-label">{{ __('seller::auth.confirm_password') }}</label>
-                    <input class="form-control" type="password" required id="password_confirmation"
-                           min="{{ config('seller.password_length') }}"
+                    <input class="form-control" type="password" required id="password_confirmation" tabindex="4"
+                           name="password_confirmation" min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" checked id="checkbox-signup">
+                        <input type="checkbox" class="form-check-input" checked id="checkbox-signup" tabindex="5">
                         <label class="form-check-label" for="checkbox-signup">{{ __('seller::auth.i_accept') }} <a
                                 href="{{ route(config('seller.terms_and_conditions_url')) }}" target="_blank"
                                 class="text-muted">{{ __('seller::auth.terms_and_conditions') }}</a></label>
                     </div>
                 </div>
                 <div class="mb-0 d-grid text-center">
-                    <button class="btn btn-primary" type="submit"><i
+                    <button class="btn btn-primary" type="submit" tabindex="6"><i
                             class="mdi mdi-account-circle"></i> {{ __('seller::auth.sign_up') }}
                     </button>
                 </div>

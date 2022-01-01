@@ -39,7 +39,7 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('seller::auth.email_address') }}</label>
                     <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}"
-                           required=""
+                           required="" tabindex="1" autofocus
                            placeholder="{{ __('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-3">
@@ -47,18 +47,18 @@
                        class="text-muted float-end"><small>{{ __('seller::auth.forgot_your_password') }}</small></a>
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
                     <input class="form-control" type="password" required="" id="password" name="password"
-                           min="{{ config('seller.password_length') }}"
+                           min="{{ config('seller.password_length') }}" tabindex="2"
                            placeholder="{{ __('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox-remember" name="remember" checked>
+                        <input type="checkbox" class="form-check-input" tabindex="3" id="checkbox-remember" name="remember" checked>
                         <label class="form-check-label"
                                for="checkbox-remember">{{ __('seller::auth.remember_me') }}</label>
                     </div>
                 </div>
                 <div class="d-grid mb-0 text-center">
-                    <button class="btn btn-primary" type="submit"><i
+                    <button class="btn btn-primary" type="submit" tabindex="4"><i
                             class="mdi mdi-login"></i> {{ __('seller::auth.log_in') }}</button>
                 </div>
             </form>

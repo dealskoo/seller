@@ -79,11 +79,11 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">{{ __('seller::auth.email_address') }}</label>
                         <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}"
-                               required="" autofocus
+                               required="" autofocus tabindex="1"
                                placeholder="{{ __('seller::auth.email_address_placeholder') }}">
                     </div>
                     <div class="mb-0 text-center d-grid">
-                        <button class="btn btn-primary" type="submit"><i
+                        <button class="btn btn-primary" type="submit" tabindex="2"><i
                                 class="mdi mdi-lock-reset"></i> {{ __('seller::auth.reset_password') }}
                         </button>
                     </div>
