@@ -18,20 +18,28 @@
 
             <!-- title-->
             <h4 class="mt-0">{{ __('seller::auth.create_new_password') }}</h4>
-            <p class="text-muted mb-4">{{ __('seller::auth.create_new_password_tip',['length'=>config('seller.password_length')]) }}</p>
+            @if(empty($errors->all()))
+                <p class="text-muted mb-4">{{ __('seller::auth.create_new_password_tip',['length'=>config('seller.password_length')]) }}</p>
+            @else
+                @foreach($errors->all() as $error)
+                    <p class="text-danger mb-0">{{ $error }}</p>
+                @endforeach
+            @endif
 
-            <!-- form -->
+        <!-- form -->
             <form action="{{ route('seller.password.update') }}" method="post">
                 @csrf
 
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('seller::auth.email_address') }}</label>
-                    <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}" required
+                    <input class="form-control" type="email" id="email" name="email"
+                           value="{{ old('email',$request->email) }}" required
                            placeholder="{{ __('seller::auth.email_address_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
-                    <input class="form-control" type="password" required id="password"
+                    <input class="form-control" type="password" required id="password" name="password"
                            min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.password_placeholder') }}">
                 </div>
@@ -39,6 +47,7 @@
                     <label for="password_confirmation"
                            class="form-label">{{ __('seller::auth.confirm_password') }}</label>
                     <input class="form-control" type="password" required id="password_confirmation"
+                           name="password_confirmation"
                            min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
                 </div>

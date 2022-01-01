@@ -38,7 +38,7 @@ class NewPasswordController extends Controller
         );
 
         return $status == Password::PASSWORD_RESET
-            ? redirect()->route('seller.login')->with('status', __($status))
+            ? redirect()->route('seller.login')->withInput($request->only('email'))->with('status', __($status))
             : back()->withInput($request->only('email'))->withErrors(['email' => __($status)]);
     }
 }
