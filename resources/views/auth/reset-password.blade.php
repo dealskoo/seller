@@ -32,12 +32,14 @@
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
                     <input class="form-control" type="password" required id="password"
+                           min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
                     <label for="password_confirmation"
                            class="form-label">{{ __('seller::auth.confirm_password') }}</label>
                     <input class="form-control" type="password" required id="password_confirmation"
+                           min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
                 </div>
                 <div class="mb-0 d-grid text-center">

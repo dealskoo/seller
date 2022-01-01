@@ -47,6 +47,7 @@
                        class="text-muted float-end"><small>{{ __('seller::auth.forgot_your_password') }}</small></a>
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
                     <input class="form-control" type="password" required="" id="password" name="password"
+                           min="{{ config('seller.password_length') }}"
                            placeholder="{{ __('seller::auth.password_placeholder') }}">
                 </div>
                 <div class="mb-3">
