@@ -1,5 +1,6 @@
 <?php
 
+use Dealskoo\Seller\Http\Controllers\AccountController;
 use Dealskoo\Seller\Http\Controllers\Auth\AuthenticatedSessionController;
 use Dealskoo\Seller\Http\Controllers\Auth\ConfirmablePasswordController;
 use Dealskoo\Seller\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -43,10 +44,10 @@ Route::middleware(['web'])->prefix(config('seller.route.prefix'))->name('seller.
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
+        Route::get('/account', [AccountController::class, 'create'])->name('account');
+
         Route::middleware(['password.confirm:seller.password.confirm'])->group(function () {
-            Route::get('/test', function () {
-                phpinfo();
-            });
+
         });
     });
 });
