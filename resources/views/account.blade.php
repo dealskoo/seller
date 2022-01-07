@@ -8,11 +8,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a
-                                href="{{ route('seller.dashboard') }}">{{ __('seller::dashboard.title') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('seller::account.title') }}</li>
+                                href="{{ route('seller.dashboard') }}">{{ __('seller::seller.dashboard') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('seller::seller.my_account') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">{{ __('seller::account.title') }}</h4>
+                <h4 class="page-title">{{ __('seller::seller.my_account') }}</h4>
             </div>
         </div>
     </div>

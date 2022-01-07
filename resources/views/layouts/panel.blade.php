@@ -239,6 +239,16 @@
                                     <span>My Account</span>
                                 </a>
 
+                                <a href="{{ route('seller.account') }}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-edit me-1"></i>
+                                    <span>Update Email</span>
+                                </a>
+
+                                <a href="{{ route('seller.account') }}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-lock-outline me-1"></i>
+                                    <span>Update Password</span>
+                                </a>
+
                                 <!-- item-->
                                 <a href="{{ route('seller.logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -437,7 +447,7 @@
                         <div class="text-md-end footer-links d-none d-md-block">
                             @foreach(config('seller.footer_menus') as $menu)
                                 <a target="_blank" href="{{ route($menu['url']) }}">
-                                    {{ __('seller::dashboard.'.$menu['name']) }}
+                                    {{ __('seller::seller.'.$menu['name']) }}
                                 </a>
                             @endforeach
                         </div>

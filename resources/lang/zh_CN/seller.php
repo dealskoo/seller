@@ -1,7 +1,8 @@
 <?php
 return [
-    'title' => '仪表盘',
+    'dashboard' => '仪表盘',
     'about' => '关于我们',
     'support' => '在线支持',
     'contact_us' => '联系我们',
+    'my_account' => '我的账号',
 ];
