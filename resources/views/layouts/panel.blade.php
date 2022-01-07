@@ -123,7 +123,8 @@
                                 <div class="dropdown-item noti-title">
                                     <h5 class="m-0">
                                                 <span class="float-end">
-                                                    <a href="javascript: void(0);" class="text-dark">
+                                                    <a href="{{ route('seller.notification.all_read') }}"
+                                                       class="text-dark">
                                                         <small>Clear All</small>
                                                     </a>
                                                 </span>Notification
@@ -198,7 +199,7 @@
                                 </div>
 
                                 <!-- All-->
-                                <a href="javascript:void(0);"
+                                <a href="{{ route('seller.notification.list') }}"
                                    class="dropdown-item text-center text-primary notify-item notify-all">
                                     View All
                                 </a>

@@ -9,6 +9,7 @@ use Dealskoo\Seller\Http\Controllers\Auth\NewPasswordController;
 use Dealskoo\Seller\Http\Controllers\Auth\PasswordResetLinkController;
 use Dealskoo\Seller\Http\Controllers\Auth\RegisteredSellerController;
 use Dealskoo\Seller\Http\Controllers\Auth\VerifyEmailController;
+use Dealskoo\Seller\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
@@ -42,12 +43,19 @@ Route::middleware(['web'])->prefix(config('seller.route.prefix'))->name('seller.
         Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
         Route::middleware(['throttle:6,1'])->post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
 
+        Route::get('/account', [AccountController::class, 'create'])->name('account');
+
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-        Route::get('/account', [AccountController::class, 'create'])->name('account');
+        Route::name('notification.')->group(function () {
+            Route::get('/notifications', [NotificationController::class, 'list'])->name('list');
+            Route::get('/notifications/all_read', [NotificationController::class, 'allRead'])->name('all_read');
+            Route::get('/notification/{notification}', [NotificationController::class, 'show'])->name('show');
+        });
 
         Route::middleware(['password.confirm:seller.password.confirm'])->group(function () {
 
         });
+
     });
 });

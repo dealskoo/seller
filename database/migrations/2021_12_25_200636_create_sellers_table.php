@@ -17,9 +17,12 @@ class CreateSellersTable extends Migration
             $table->id();
             $table->string('avatar')->nullable();
             $table->string('name');
+            $table->string('bio', 500)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('company_name')->nullable();
+            $table->string('website')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
