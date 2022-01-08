@@ -46,13 +46,19 @@
                     <a href="{{ route('seller.password.request') }}"
                        class="text-muted float-end"><small>{{ __('seller::auth.forgot_your_password') }}</small></a>
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
-                    <input class="form-control" type="password" required="" id="password" name="password"
-                           min="{{ config('seller.password_length') }}" tabindex="2"
-                           placeholder="{{ __('seller::auth.password_placeholder') }}">
+                    <div class="input-group">
+                        <input class="form-control" type="password" required="" id="password" name="password"
+                               min="{{ config('seller.password_length') }}" tabindex="2"
+                               placeholder="{{ __('seller::auth.password_placeholder') }}">
+                        <div class="input-group-text" data-password="false">
+                            <span class="password-eye"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" tabindex="3" id="checkbox-remember" name="remember" checked>
+                        <input type="checkbox" class="form-check-input" tabindex="3" id="checkbox-remember"
+                               name="remember" checked>
                         <label class="form-check-label"
                                for="checkbox-remember">{{ __('seller::auth.remember_me') }}</label>
                     </div>

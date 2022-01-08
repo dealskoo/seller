@@ -40,17 +40,27 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
-                    <input class="form-control" type="password" required id="password" name="password"
-                           min="{{ config('seller.password_length') }}" tabindex="2"
-                           placeholder="{{ __('seller::auth.password_placeholder') }}">
+                    <div class="input-group">
+                        <input class="form-control" type="password" required id="password" name="password"
+                               min="{{ config('seller.password_length') }}" tabindex="2"
+                               placeholder="{{ __('seller::auth.password_placeholder') }}">
+                        <div class="input-group-text" data-password="false">
+                            <span class="password-eye"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="password_confirmation"
                            class="form-label">{{ __('seller::auth.confirm_password') }}</label>
-                    <input class="form-control" type="password" required id="password_confirmation"
-                           name="password_confirmation" tabindex="3"
-                           min="{{ config('seller.password_length') }}"
-                           placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
+                    <div class="input-group">
+                        <input class="form-control" type="password" required id="password_confirmation"
+                               name="password_confirmation" tabindex="3"
+                               min="{{ config('seller.password_length') }}"
+                               placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
+                        <div class="input-group-text" data-password="false">
+                            <span class="password-eye"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-0 d-grid text-center">
                     <button class="btn btn-primary" type="submit" tabindex="4"><i

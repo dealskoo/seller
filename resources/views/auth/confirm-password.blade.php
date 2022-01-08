@@ -36,9 +36,14 @@
                 @csrf
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
-                    <input class="form-control" type="password" required="" id="password" name="password"
-                           min="{{ config('seller.password_length') }}" autofocus tabindex="1"
-                           placeholder="{{ __('seller::auth.password_placeholder') }}">
+                    <div class="input-group">
+                        <input class="form-control" type="password" required="" id="password" name="password"
+                               min="{{ config('seller.password_length') }}" autofocus tabindex="1"
+                               placeholder="{{ __('seller::auth.password_placeholder') }}">
+                        <div class="input-group-text" data-password="false">
+                            <span class="password-eye"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-0 text-center d-grid">
                     <button class="btn btn-primary" type="submit">{{ __('Confirm') }}</button>

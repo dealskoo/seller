@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    public function create()
-    {
-        return view('seller::account');
-    }
 
     public function store(Request $request)
     {

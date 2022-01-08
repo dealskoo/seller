@@ -43,7 +43,25 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
         Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
         Route::middleware(['throttle:6,1'])->post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-        Route::get('/account', [AccountController::class, 'create'])->name('account');
+        Route::prefix('/account')->name('account.')->group(function () {
+            Route::get('/', function () {
+                return view('seller::account.profile');
+            })->name('profile');
+
+            Route::post('/', [AccountController::class, 'store'])->name('profile');
+
+            Route::get('/email', function () {
+                return view('seller::account.email');
+            })->name('email');
+
+            Route::post('/email', [AccountController::class, 'email'])->name('email');
+
+            Route::get('/password', function () {
+                return view('seller::account.password');
+            })->name('password');
+
+            Route::post('/password', [AccountController::class, 'password'])->name('password');
+        });
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 

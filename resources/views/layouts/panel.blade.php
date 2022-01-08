@@ -234,17 +234,17 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="{{ route('seller.account') }}" class="dropdown-item notify-item">
+                                <a href="{{ route('seller.account.profile') }}" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-circle me-1"></i>
                                     <span>My Account</span>
                                 </a>
 
-                                <a href="{{ route('seller.account') }}" class="dropdown-item notify-item">
+                                <a href="{{ route('seller.account.email') }}" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-edit me-1"></i>
                                     <span>Update Email</span>
                                 </a>
 
-                                <a href="{{ route('seller.account') }}" class="dropdown-item notify-item">
+                                <a href="{{ route('seller.account.password') }}" class="dropdown-item notify-item">
                                     <i class="mdi mdi-lock-outline me-1"></i>
                                     <span>Update Password</span>
                                 </a>
