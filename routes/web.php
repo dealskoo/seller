@@ -12,7 +12,7 @@ use Dealskoo\Seller\Http\Controllers\Auth\VerifyEmailController;
 use Dealskoo\Seller\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['web'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
+Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
 
     Route::middleware(['guest:seller'])->group(function () {
         Route::get('/', function () {

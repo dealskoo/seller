@@ -21,4 +21,11 @@ return [
         'url' => 'seller.login'
     ]],
     'terms_and_conditions_url' => 'seller.login',
+    'languages' => ['en' => [
+        'icon' => '/vendor/seller/images/flags/us.svg',
+        'name' => 'English'
+    ], 'zh_CN' => [
+        'icon' => '/vendor/seller/images/flags/cn.svg',
+        'name' => '简体中文'
+    ]],
 ];

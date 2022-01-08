@@ -115,3 +115,20 @@ class EventServiceProvider extends ServiceProvider
 }
 
 ```
+
+`App\Http\Kernel.php`
+
+```php
+    protected $routeMiddleware = [
+        'auth' => Authenticate::class,
+        'auth.basic' => AuthenticateWithBasicAuth::class,
+        'cache.headers' => SetCacheHeaders::class,
+        'can' => Authorize::class,
+        'guest' => RedirectIfAuthenticated::class,
+        'password.confirm' => RequirePassword::class,
+        'signed' => ValidateSignature::class,
+        'throttle' => ThrottleRequests::class,
+        'verified' => EnsureEmailIsVerified::class,
+        'seller_locale' => \Dealskoo\Seller\Http\Middleware\SellerLocalization::class,
+    ];
+```

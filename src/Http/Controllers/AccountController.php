@@ -11,4 +11,19 @@ class AccountController extends Controller
     {
         return view('seller::account');
     }
+
+    public function store(Request $request)
+    {
+
+    }
+
+    public function email(Request $request)
+    {
+
+    }
+
+    public function password(Request $request)
+    {
+
+    }
 }
