@@ -18,6 +18,11 @@ class AccountController extends Controller
 
     }
 
+    public function emailVerify()
+    {
+
+    }
+
     public function password(Request $request)
     {
 

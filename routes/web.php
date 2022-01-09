@@ -54,7 +54,9 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
                 return view('seller::account.email');
             })->name('email');
 
-            Route::post('/email', [AccountController::class, 'email'])->name('email');
+            Route::middleware(['throttle:6,1'])->post('/email', [AccountController::class, 'email'])->name('email');
+
+            Route::middleware(['signed', 'throttle:6,1'])->get('/email/verify/{hash}', [AccountController::class, 'emailVerify'])->name('email.verify');
 
             Route::get('/password', function () {
                 return view('seller::account.password');
