@@ -54,7 +54,7 @@ class EmailChangeNotification extends Notification
         return (new MailMessage)
             ->subject(__('Email Verify Notification'))
             ->line(__('You are receiving this email because we received an email change request for your account.'))
-            ->action(__(' Verify Email'), $url)
+            ->action(__('Verify Email'), $url)
             ->line(__('This verify email link will expire in :count minutes.', ['count' => config('auth.passwords.admins.expire')]))
             ->line(__('If you did not request an email change, no further action is required.'));
     }
