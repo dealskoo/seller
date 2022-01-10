@@ -9,7 +9,9 @@ use Dealskoo\Seller\Http\Controllers\Auth\NewPasswordController;
 use Dealskoo\Seller\Http\Controllers\Auth\PasswordResetLinkController;
 use Dealskoo\Seller\Http\Controllers\Auth\RegisteredSellerController;
 use Dealskoo\Seller\Http\Controllers\Auth\VerifyEmailController;
+use Dealskoo\Seller\Http\Controllers\DashboardController;
 use Dealskoo\Seller\Http\Controllers\NotificationController;
+use Dealskoo\Seller\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
@@ -36,11 +38,12 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
     Route::middleware(['auth:seller', 'throttle:6,1'])->post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');
 
     Route::middleware(['auth:seller', 'verified:seller.verification.notice'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('seller::dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'handle'])->name('dashboard');
+
+        Route::get('/search', [SearchController::class, 'handle'])->name('search');
 
         Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
+
         Route::middleware(['throttle:6,1'])->post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
 
         Route::prefix('/account')->name('account.')->group(function () {
@@ -69,6 +72,7 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
 
         Route::name('notification.')->group(function () {
             Route::get('/notifications', [NotificationController::class, 'list'])->name('list');
+            Route::get('/notifications/unread', [NotificationController::class, 'unread'])->name('unread');
             Route::get('/notifications/all_read', [NotificationController::class, 'allRead'])->name('all_read');
             Route::get('/notification/{notification}', [NotificationController::class, 'show'])->name('show');
         });

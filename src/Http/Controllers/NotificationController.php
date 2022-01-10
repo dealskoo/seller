@@ -13,6 +13,12 @@ class NotificationController extends Controller
         return view('seller::notifications', ['notifications' => $notifications]);
     }
 
+    public function unread(Request $request)
+    {
+        $notifications = $request->user()->unreadNotifications()->paginate(10);
+        return view('seller::notifications', ['notifications' => $notifications]);
+    }
+
     public function show(Request $request, $id)
     {
         $notification = $request->user()->notifications()->where('id', $id)->first();

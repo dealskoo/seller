@@ -2,6 +2,10 @@
 
 namespace Dealskoo\Seller\Providers;
 
+use Dealskoo\Seller\Contracts\Dashboard;
+use Dealskoo\Seller\Contracts\Searcher;
+use Dealskoo\Seller\Contracts\Support\DefaultDashboard;
+use Dealskoo\Seller\Contracts\Support\DefaultSearcher;
 use Illuminate\Support\ServiceProvider;
 
 class SellerServiceProvider extends ServiceProvider
@@ -14,6 +18,8 @@ class SellerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/seller.php', 'seller');
+        $this->app->bind(Dashboard::class, DefaultDashboard::class);
+        $this->app->bind(Searcher::class, DefaultSearcher::class);
     }
 
     /**

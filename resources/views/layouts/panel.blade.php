@@ -54,9 +54,10 @@
                                 <i class="dripicons-search noti-icon"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                                <form class="p-3">
-                                    <input type="text" class="form-control" placeholder="Search ..."
-                                           aria-label="Recipient's username">
+                                <form class="p-3" method="get" action="{{ route('seller.search') }}">
+                                    <input type="text" class="form-control"
+                                           placeholder="{{ __('seller::seller.search_placeholder') }}"
+                                           name="q" required>
                                 </form>
                             </div>
                         </li>
@@ -227,74 +228,18 @@
                             <span></span>
                         </div>
                     </a>
-                    <div class="app-search dropdown">
-                        <form>
+                    <div class="app-search">
+                        <form method="get" action="{{ route('seller.search') }}">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search..." id="top-search">
+                                <input type="text" class="form-control"
+                                       placeholder="{{ __('seller::seller.search_placeholder') }}" id="top-search"
+                                       name="q" required>
                                 <span class="mdi mdi-magnify search-icon"></span>
-                                <button class="input-group-text btn-primary" type="submit">Search</button>
+                                <button class="input-group-text btn-primary"
+                                        type="submit">{{ __('seller::seller.search') }}</button>
                             </div>
 
                         </form>
-
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                            <!-- item-->
-                            <div class="dropdown-header noti-title">
-                                <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
-                            </div>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="uil-notes font-16 me-1"></i>
-                                <span>Analytics Report</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="uil-life-ring font-16 me-1"></i>
-                                <span>How can I help you?</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="uil-cog font-16 me-1"></i>
-                                <span>User profile settings</span>
-                            </a>
-
-                            <!-- item-->
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                            </div>
-
-                            <div class="notification-list">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle"
-                                             src="{{ asset('/vendor/seller/images/logo_sm.svg') }}"
-                                             alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Erwin Brown</h5>
-                                            <span class="font-12 mb-0">UI Designer</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle"
-                                             src="{{ asset('/vendor/seller/images/logo_sm.svg') }}"
-                                             alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Jacob Deo</h5>
-                                            <span class="font-12 mb-0">Developer</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
