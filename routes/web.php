@@ -10,11 +10,14 @@ use Dealskoo\Seller\Http\Controllers\Auth\PasswordResetLinkController;
 use Dealskoo\Seller\Http\Controllers\Auth\RegisteredSellerController;
 use Dealskoo\Seller\Http\Controllers\Auth\VerifyEmailController;
 use Dealskoo\Seller\Http\Controllers\DashboardController;
+use Dealskoo\Seller\Http\Controllers\LocalizationController;
 use Dealskoo\Seller\Http\Controllers\NotificationController;
 use Dealskoo\Seller\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
+
+    Route::get('/locale/{locale}', [LocalizationController::class, '__invoke'])->name('locale');
 
     Route::middleware(['guest:seller'])->group(function () {
         Route::get('/', function () {

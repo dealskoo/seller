@@ -61,54 +61,32 @@
                                 </form>
                             </div>
                         </li>
-
+                        @php
+                            $locale_code = session('seller_locale','en');
+                            $locale = config('seller.languages')[$locale_code];
+                        @endphp
                         <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
                             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown"
                                id="topbar-languagedrop" href="#" role="button" aria-haspopup="true"
                                aria-expanded="false">
-                                <img src="{{ asset('/vendor/seller/images/flags/us.svg') }}" alt="user-image"
+                                <img src="{{ asset($locale['icon']) }}" alt="user-image"
                                      class="me-1" height="12"> <span
-                                    class="align-middle">English</span> <i
+                                    class="align-middle">{{ $locale['name'] }}</span> <i
                                     class="mdi mdi-chevron-down align-middle"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu"
                                  aria-labelledby="topbar-languagedrop">
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="{{ asset('/vendor/seller/images/flags/cn.svg') }}" alt="user-image"
-                                         class="me-1"
-                                         height="12"> <span class="align-middle">简体中文</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="{{ asset('/vendor/seller/images/flags/de.svg') }}" alt="user-image"
-                                         class="me-1"
-                                         height="12"> <span class="align-middle">German</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="{{ asset('/vendor/seller/images/flags/it.svg') }}" alt="user-image"
-                                         class="me-1" height="12">
-                                    <span class="align-middle">Italian</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="{{ asset('/vendor/seller/images/flags/es.svg') }}" alt="user-image"
-                                         class="me-1" height="12">
-                                    <span class="align-middle">Spanish</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="{{ asset('/vendor/seller/images/flags/ru.svg') }}" alt="user-image"
-                                         class="me-1" height="12">
-                                    <span class="align-middle">Russian</span>
-                                </a>
-
+                                @foreach(config('seller.languages') as $code => $language)
+                                    @if($locale_code!=$code)
+                                        <a href="{{ route('seller.locale',['locale'=>$code]) }}"
+                                           class="dropdown-item notify-item">
+                                            <img src="{{ asset($language['icon']) }}"
+                                                 alt="user-image" class="me-1" height="12"> <span
+                                                class="align-middle">{{ $language['name'] }}</span>
+                                        </a>
+                                    @endif
+                                @endforeach
                             </div>
                         </li>
                         @php
