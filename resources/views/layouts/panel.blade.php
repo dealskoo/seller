@@ -109,9 +109,9 @@
                                                 <span class="float-end">
                                                     <a href="{{ route('seller.notification.all_read') }}"
                                                        class="text-dark">
-                                                        <small>Clear All</small>
+                                                        <small>{{ __('seller::seller.clear_all') }}</small>
                                                     </a>
-                                                </span>Notification
+                                                </span>{{ __('seller::seller.notification') }}
                                     </h5>
                                 </div>
 
@@ -138,7 +138,7 @@
                                 <!-- All-->
                                 <a href="{{ route('seller.notification.list') }}"
                                    class="dropdown-item text-center text-primary notify-item notify-all">
-                                    View All
+                                    {{ __('seller::seller.view_all') }}
                                 </a>
 
                             </div>
@@ -167,23 +167,23 @@
                                 aria-labelledby="topbar-userdrop">
                                 <!-- item-->
                                 <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                    <h6 class="text-overflow m-0">{{ __('seller::seller.welcome') }} !</h6>
                                 </div>
 
                                 <!-- item-->
                                 <a href="{{ route('seller.account.profile') }}" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-circle me-1"></i>
-                                    <span>My Account</span>
+                                    <span>{{ __('seller::seller.my_account') }}</span>
                                 </a>
 
                                 <a href="{{ route('seller.account.email') }}" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-edit me-1"></i>
-                                    <span>Update Email</span>
+                                    <span>{{ __('seller::seller.update_email') }}</span>
                                 </a>
 
                                 <a href="{{ route('seller.account.password') }}" class="dropdown-item notify-item">
                                     <i class="mdi mdi-lock-outline me-1"></i>
-                                    <span>Update Password</span>
+                                    <span>{{ __('seller::seller.update_password') }}</span>
                                 </a>
 
                                 <!-- item-->
@@ -191,7 +191,7 @@
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                    class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout me-1"></i>
-                                    <span>Logout</span>
+                                    <span>{{ __('seller::seller.logout') }}</span>
                                 </a>
                                 <form id="logout-form" action="{{ route('seller.logout') }}" method="POST"
                                       class="d-none">@csrf</form>
@@ -355,43 +355,43 @@
         <a href="javascript:void(0);" class="end-bar-toggle float-end">
             <i class="dripicons-cross noti-icon"></i>
         </a>
-        <h5 class="m-0">Settings</h5>
+        <h5 class="m-0">{{ __('seller::seller.settings') }}</h5>
     </div>
 
     <div class="rightbar-content h-100" data-simplebar>
 
         <div class="p-3">
             <!-- Settings -->
-            <h5>Color Scheme</h5>
+            <h5>{{ __('seller::seller.color_scheme') }}</h5>
             <hr class="mt-1"/>
 
             <div class="form-check form-switch mb-1">
                 <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="light"
                        id="light-mode-check" checked/>
-                <label class="form-check-label" for="light-mode-check">Light Mode</label>
+                <label class="form-check-label" for="light-mode-check">{{ __('seller::seller.light_mode') }}</label>
             </div>
 
             <div class="form-check form-switch mb-1">
                 <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="dark"
                        id="dark-mode-check"/>
-                <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
+                <label class="form-check-label" for="dark-mode-check">{{ __('seller::seller.dark_mode') }}</label>
             </div>
 
             <!-- Width -->
-            <h5 class="mt-4">Width</h5>
+            <h5 class="mt-4">{{ __('seller::seller.width') }}</h5>
             <hr class="mt-1"/>
             <div class="form-check form-switch mb-1">
                 <input type="checkbox" class="form-check-input" name="width" value="fluid" id="fluid-check" checked/>
-                <label class="form-check-label" for="fluid-check">Fluid</label>
+                <label class="form-check-label" for="fluid-check">{{ __('seller::seller.fluid') }}</label>
             </div>
             <div class="form-check form-switch mb-1">
                 <input type="checkbox" class="form-check-input" name="width" value="boxed" id="boxed-check"/>
-                <label class="form-check-label" for="boxed-check">Boxed</label>
+                <label class="form-check-label" for="boxed-check">{{ __('seller::seller.boxed') }}</label>
             </div>
 
 
             <div class="d-grid mt-4">
-                <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+                <button class="btn btn-primary" id="resetBtn">{{ __('seller::seller.reset_to_default') }}</button>
             </div>
         </div> <!-- end padding-->
 
