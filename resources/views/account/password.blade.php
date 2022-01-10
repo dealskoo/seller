@@ -1,6 +1,6 @@
 @extends('seller::layouts.panel')
 
-@section('title',__('seller::account.title'))
+@section('title',__('seller::seller.update_password'))
 @section('body')
     <div class="row">
         <div class="col-12">
@@ -9,101 +9,91 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a
                                 href="{{ route('seller.dashboard') }}">{{ __('seller::seller.dashboard') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('seller::seller.my_account') }}</li>
+                        <li class="breadcrumb-item active">{{ __('seller::seller.update_password') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">{{ __('seller::seller.my_account') }}</h4>
+                <h4 class="page-title">{{ __('seller::seller.update_password') }}</h4>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xl-4 col-lg-5">
-            <div class="card text-center">
-                <div class="card-body">
-                    <img src="{{ Auth::user()->avatar_url }}" class="rounded-circle avatar-lg img-thumbnail"
-                         alt="profile-image">
-
-                    <h4 class="mb-0 mt-2">{{ Auth::user()->name }}</h4>
-                    <p class="text-muted font-14">Founder</p>
-
-                    <div class="text-start mt-3">
-                        <h4 class="font-13 text-uppercase">About Me :</h4>
-                        <p class="text-muted font-13 mb-3">
-                            Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley of type.
-                        </p>
-                        <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ms-2">Geneva
-                                                    D. McKnight</span></p>
-
-                        <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ms-2 ">user@email.domain</span>
-                        </p>
-
-                        <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ms-2">USA</span></p>
-                    </div>
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
+            @include('seller::includes.profile')
         </div> <!-- end col-->
 
         <div class="col-xl-8 col-lg-7">
             <div class="card">
                 <div class="card-body">
-                    <form>
-                        <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal
-                            Info</h5>
+                    <form action="{{ route('seller.account.password') }}" method="post">
+                        @csrf
+                        <h5 class="mb-4 text-uppercase"><i
+                                class="mdi mdi-lock-outline me-1"></i> {{ __('seller::seller.update_password') }}</h5>
+                        @if(!empty(session('success')))
+                            <div class="alert alert-success">
+                                <p class="mb-0">{{ session('success') }}</p>
+                            </div>
+                        @endif
+                        @if(!empty($errors->all()))
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p class="mb-0">{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="full_name" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="full_name"
-                                           placeholder="Enter full name">
+                                    <label for="password"
+                                           class="form-label">{{ __('seller::seller.password') }}</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" required
+                                               min="{{ config('seller.password_length') }}" name="password" autofocus
+                                               tabindex="1"
+                                               placeholder="{{ __('seller::seller.password_placeholder') }}">
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div> <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="userbio" class="form-label">Bio</label>
-                                    <textarea class="form-control" id="userbio" rows="4"
-                                              placeholder="Write something..."></textarea>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="useremail" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" id="useremail"
-                                           placeholder="Enter email">
+                                    <label for="new_password"
+                                           class="form-label">{{ __('seller::seller.new_password') }}</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="new_password"
+                                               name="new_password"
+                                               min="{{ config('seller.password_length') }}" tabindex="2"
+                                               placeholder="{{ __('seller::seller.new_password_placeholder') }}">
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div> <!-- end row -->
-                        <p class="text-muted">If you want to change password please <a
-                                href="javascript: void(0);">click</a> here.</p>
-
-                        <h5 class="mb-3 text-uppercase bg-light p-2"><i
-                                class="mdi mdi-office-building me-1"></i> Company Info</h5>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="companyname" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="companyname"
-                                           placeholder="Enter company name">
+                                    <label for="confirm_new_password"
+                                           class="form-label">{{ __('seller::seller.confirm_new_password') }}</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirm_new_password"
+                                               name="new_password_confirmation" required tabindex="3"
+                                               min="{{ config('seller.password_length') }}"
+                                               placeholder="{{ __('seller::seller.confirm_new_password_placeholder') }}">
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="cwebsite" class="form-label">Website</label>
-                                    <input type="text" class="form-control" id="cwebsite"
-                                           placeholder="Enter website url">
-                                </div>
-                            </div> <!-- end col -->
                         </div> <!-- end row -->
-
                         <div class="text-end">
-                            <button type="submit" class="btn btn-success mt-2"><i
-                                    class="mdi mdi-content-save"></i> Save
+                            <button type="submit" class="btn btn-success mt-2" tabindex="4"><i
+                                    class="mdi mdi-content-save"></i> {{ __('seller::seller.save') }}
                             </button>
                         </div>
                     </form>

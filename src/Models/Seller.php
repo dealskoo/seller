@@ -18,8 +18,11 @@ class Seller extends Authentication implements MustVerifyEmail
 
     protected $fillable = [
         'name',
+        'bio',
         'email',
         'password',
+        'company_name',
+        'website',
     ];
 
     protected $hidden = [
