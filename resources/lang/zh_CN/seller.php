@@ -31,7 +31,7 @@ return [
     'email' => '邮箱',
     'email_placeholder' => '请填写邮箱',
     'company_info' => '公司信息',
-    'company_name' => '公司名',
+    'company_name' => '公司',
     'company_name_placeholder' => '请填写公司名称',
     'website' => '网址',
     'website_placeholder' => '请填写网址',
