@@ -23,7 +23,7 @@ class NotificationController extends Controller
     {
         $notification = $request->user()->notifications()->where('id', $id)->first();
         if ($notification) {
-            $notification->makrAsRead();
+            $notification->markAsRead();
         }
         return view('seller::notification', ['notification' => $notification]);
     }
