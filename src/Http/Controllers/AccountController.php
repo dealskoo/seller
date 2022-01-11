@@ -2,11 +2,12 @@
 
 namespace Dealskoo\Seller\Http\Controllers;
 
-use Dealskoo\Seller\Http\Controllers\Controller;
 use Dealskoo\Seller\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\throwException;
 
 class AccountController extends Controller
 {
@@ -20,6 +21,25 @@ class AccountController extends Controller
         $seller->fill($request->only(['name', 'bio', 'company_name', 'website']));
         $seller->save();
         return redirect()->back()->with('success', __('seller::seller.update_success'));
+    }
+
+    public function avatar(Request $request)
+    {
+        $request->validate([
+            'file' => ['required', 'image', 'max:1000']
+        ]);
+
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $seller = $request->user();
+            $filename = $seller->id . '.' . $image->guessExtension();
+            $path = $request->file('file')->storeAs('seller/avatars', $filename);
+            $seller->avatar = $path;
+            $seller->save();
+            return ['url' => Storage::url($path)];
+        } else {
+            throwException(__('Please upload file'));
+        }
     }
 
     public function email(Request $request)

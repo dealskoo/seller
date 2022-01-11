@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authentication;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravolt\Avatar\Facade as Avatar;
 
 class Seller extends Authentication implements MustVerifyEmail
@@ -38,7 +39,7 @@ class Seller extends Authentication implements MustVerifyEmail
     {
         return empty($this->avatar) ?
             Avatar::create($this->email)->toGravatar(['d' => 'identicon', 'r' => 'pg', 's' => 100]) :
-            $this->avatar;
+            Storage::url($this->avatar);
     }
 
     public function sendPasswordResetNotification($token)

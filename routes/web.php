@@ -56,6 +56,8 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
 
             Route::post('/', [AccountController::class, 'store'])->name('profile');
 
+            Route::post('/avatar', [AccountController::class, 'avatar'])->name('avatar');
+            
             Route::get('/email', function () {
                 return view('seller::account.email');
             })->name('email');
