@@ -6,7 +6,9 @@ use Dealskoo\Seller\Contracts\Dashboard;
 use Dealskoo\Seller\Contracts\Searcher;
 use Dealskoo\Seller\Contracts\Support\DefaultDashboard;
 use Dealskoo\Seller\Contracts\Support\DefaultSearcher;
+use Dealskoo\Seller\Menu\SellerPresenter;
 use Illuminate\Support\ServiceProvider;
+use Nwidart\Menus\Facades\Menu;
 
 class SellerServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,10 @@ class SellerServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/seller.php', 'seller');
         $this->app->bind(Dashboard::class, DefaultDashboard::class);
         $this->app->bind(Searcher::class, DefaultSearcher::class);
+        $this->app->singleton('seller_menu', function () {
+            return Menu::instance('seller_navbar');
+        });
+
     }
 
     /**
@@ -53,5 +59,10 @@ class SellerServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/seller'),
         ], 'lang');
 
+        Menu::create('seller_navbar', function ($menu) {
+            $menu->enableOrdering();
+            $menu->setPresenter(SellerPresenter::class);
+            $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
+        });
     }
 }

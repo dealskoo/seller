@@ -226,82 +226,8 @@
             <div class="topnav shadow-sm">
                 <div class="container-fluid">
                     <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-
-                        <div class="collapse navbar-collapse" id="topnav-menu-content">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps"
-                                       role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false">
-                                        <i class="uil-dashboard me-1"></i>Dashboards
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                                        <a href="#" class="dropdown-item">Calendar</a>
-                                        <a href="#" class="dropdown-item">Chat</a>
-                                        <div class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#"
-                                               id="topnav-ecommerce" role="button" data-bs-toggle="dropdown"
-                                               aria-haspopup="true" aria-expanded="false">
-                                                Ecommerce
-                                                <div class="arrow-down"></div>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">
-                                                <a href="#" class="dropdown-item">Products</a>
-                                                <a href="#" class="dropdown-item">Products Details</a>
-                                                <a href="#" class="dropdown-item">Orders</a>
-                                                <a href="#" class="dropdown-item">Order Details</a>
-                                                <a href="#" class="dropdown-item">Customers</a>
-                                                <a href="#" class="dropdown-item">Shopping Cart</a>
-                                                <a href="#" class="dropdown-item">Checkout</a>
-                                                <a href="#" class="dropdown-item">Sellers</a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#"
-                                               id="topnav-email" role="button" data-bs-toggle="dropdown"
-                                               aria-haspopup="true" aria-expanded="false">
-                                                Email
-                                                <div class="arrow-down"></div>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                                <a href="#" class="dropdown-item">Inbox</a>
-                                                <a href="#" class="dropdown-item">Read Email</a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#"
-                                               id="topnav-project" role="button" data-bs-toggle="dropdown"
-                                               aria-haspopup="true" aria-expanded="false">
-                                                Projects
-                                                <div class="arrow-down"></div>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="topnav-project">
-                                                <a href="#" class="dropdown-item">List</a>
-                                                <a href="#" class="dropdown-item">Details</a>
-                                                <a href="#" class="dropdown-item">Gantt</a>
-                                                <a href="#" class="dropdown-item">Create
-                                                    Project</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="dropdown-item">Social Feed</a>
-                                        <div class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#"
-                                               id="topnav-tasks" role="button" data-bs-toggle="dropdown"
-                                               aria-haspopup="true" aria-expanded="false">
-                                                Tasks
-                                                <div class="arrow-down"></div>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="topnav-tasks">
-                                                <a href="#" class="dropdown-item">List</a>
-                                                <a href="#" class="dropdown-item">Details</a>
-                                                <a href="#" class="dropdown-item">Kanban Board</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="dropdown-item">File Manager</a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="collapse navbar-collapse active" id="topnav-menu-content">
+                            {!! \Nwidart\Menus\Facades\Menu::render('seller_navbar') !!}
                         </div>
                     </nav>
                 </div>
