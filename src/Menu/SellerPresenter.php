@@ -61,7 +61,7 @@ class SellerPresenter extends Presenter
     public function getMenuWithDropDownWrapper($item)
     {
         return '<li class="nav-item dropdown' . $this->getActiveStateOnChild($item, ' active') . '">
-		          <a href="#" class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown">
+		          <a href="#" class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown">
 					' . $item->getIcon() . __($item->title) . '<div class="arrow-down"></div>
 			      </a>
 			      <ul class="dropdown-menu">
