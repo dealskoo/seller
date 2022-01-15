@@ -159,7 +159,7 @@
                                         </span>
                                 <span>
                                             <span class="account-user-name">{{ Auth::user()->name }}</span>
-                                            <span class="account-position">Monthly</span>
+                                            <span class="account-position">{{ Auth::user()->email }}</span>
                                         </span>
                             </a>
                             <div

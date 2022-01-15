@@ -2,6 +2,7 @@
 return [
     'seller' => '商家',
     'sellers' => '商家',
+    'sellers_list' => '商家列表',
     'dashboard' => '仪表盘',
     'about' => '关于我们',
     'support' => '在线支持',
@@ -46,5 +47,7 @@ return [
     'new_password_placeholder' => '请填写新密码',
     'confirm_new_password' => '确认新密码',
     'confirm_new_password_placeholder' => '确认新密码',
-    'update_success' => '更新成功!'
+    'update_success' => '更新成功!',
+    'no_data_to_show' => '没有数据显示',
+    'page_not_found' => '页面没有找到'
 ];

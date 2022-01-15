@@ -2,6 +2,7 @@
 return [
     'seller' => 'Seller',
     'sellers' => 'Sellers',
+    'sellers_list' => 'Sellers List',
     'dashboard' => 'Dashboard',
     'about' => 'About',
     'support' => 'Support',
@@ -46,5 +47,7 @@ return [
     'new_password_placeholder' => 'Enter a new password',
     'confirm_new_password' => 'Confirm new password',
     'confirm_new_password_placeholder' => 'Confirm new password',
-    'update_success' => 'Updated success!'
+    'update_success' => 'Updated success!',
+    'no_data_to_show' => 'No data to show',
+    'page_not_found' => 'Page Not Found'
 ];
