@@ -1,5 +1,7 @@
 <?php
 return [
+    'seller' => '商家',
+    'sellers' => '商家',
     'dashboard' => '仪表盘',
     'about' => '关于我们',
     'support' => '在线支持',

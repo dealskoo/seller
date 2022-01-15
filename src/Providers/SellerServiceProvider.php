@@ -2,6 +2,7 @@
 
 namespace Dealskoo\Seller\Providers;
 
+use Dealskoo\Admin\Facades\AdminMenu;
 use Dealskoo\Seller\Contracts\Dashboard;
 use Dealskoo\Seller\Contracts\Searcher;
 use Dealskoo\Seller\Contracts\Support\DefaultDashboard;
@@ -42,6 +43,7 @@ class SellerServiceProvider extends ServiceProvider
         }
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/admin.php');
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'seller');
 
@@ -64,5 +66,7 @@ class SellerServiceProvider extends ServiceProvider
             $menu->setPresenter(SellerPresenter::class);
             $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
         });
+
+        AdminMenu::route('admin.sellers.index', 'seller::seller.sellers', [], ['icon' => 'uil-shop'])->order(5);
     }
 }

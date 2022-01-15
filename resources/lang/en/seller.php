@@ -1,5 +1,7 @@
 <?php
 return [
+    'seller' => 'Seller',
+    'sellers' => 'Sellers',
     'dashboard' => 'Dashboard',
     'about' => 'About',
     'support' => 'Support',
