@@ -23,6 +23,7 @@ class CreateSellersTable extends Migration
             $table->string('password');
             $table->string('company_name')->nullable();
             $table->string('website')->nullable();
+            $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
