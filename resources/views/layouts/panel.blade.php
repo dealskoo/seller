@@ -11,6 +11,9 @@
 
     <!-- third party css -->
     <link href="{{ asset('/vendor/seller/css/vendor/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/vendor/seller/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/vendor/seller/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/vendor/seller/css/vendor/select.bootstrap5.css') }}" rel="stylesheet" type="text/css"/>
     <!-- third party css end -->
 
     <!-- App css -->
@@ -19,7 +22,7 @@
           id="light-style"/>
     <link href="{{ asset('/vendor/seller/css/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css"
           id="dark-style"/>
-
+    @yield('css')
 </head>
 
 <body class="loading" data-layout="topnav">
@@ -336,6 +339,12 @@
 <script src="{{ asset('/vendor/seller/js/vendor/apexcharts.min.js') }}"></script>
 <script src="{{ asset('/vendor/seller/js/vendor/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ asset('/vendor/seller/js/vendor/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ asset('/vendor/admin/js/vendor/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/vendor/admin/js/vendor/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('/vendor/admin/js/vendor/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('/vendor/admin/js/vendor/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('/vendor/admin/js/vendor/dataTables.select.min.js') }}"></script>
+@yield('script')
 <!-- third party js ends -->
 
 </body>
