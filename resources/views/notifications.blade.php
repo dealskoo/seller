@@ -44,7 +44,7 @@
                         <!-- end .mt-4 -->
 
                         <div class="row">
-                            {{ $notifications->withQueryString()->links() }}
+                            {{ $notifications->withQueryString()->links('seller::pagination.simple') }}
                         </div>
                         <!-- end row-->
                     </div>
