@@ -49,5 +49,10 @@ return [
     'confirm_new_password_placeholder' => 'Confirm new password',
     'update_success' => 'Updated success!',
     'no_data_to_show' => 'No data to show',
-    'page_not_found' => 'Page Not Found'
+    'page_not_found' => 'Page Not Found',
+    'display' => 'Display',
+    'entries' => 'Entries',
+    'datatable_pagination' => 'Showing _START_ to _END_ of _TOTAL_',
+    'nothing_found' => 'Nothing found',
+    'datatable_filtered' => '(filtered from _MAX_ total entries)',
 ];

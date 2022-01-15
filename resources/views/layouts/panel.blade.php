@@ -344,6 +344,22 @@
 <script src="{{ asset('/vendor/admin/js/vendor/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('/vendor/admin/js/vendor/responsive.bootstrap5.min.js') }}"></script>
 <script src="{{ asset('/vendor/admin/js/vendor/dataTables.select.min.js') }}"></script>
+<script type="text/javascript">
+    let language = {
+        "aria": "",
+        "paginate": {
+            "previous": "<i class='mdi mdi-chevron-left'>",
+            "next": "<i class='mdi mdi-chevron-right'>"
+        },
+        "processing": "<div class=\"spinner-border text-danger\" role=\"status\"></div>",
+        "zeroRecords": "{{ __('seller::seller.nothing_found') }}",
+        "info": "{{ __('seller::seller.datatable_pagination') }}",
+        "infoFiltered": "{{ __('seller::seller.datatable_filtered') }}",
+        "search": "{{ __('seller::seller.search') }}",
+        "lengthMenu": "{{ __('admin::seller.display') }} <select class='form-select form-select-sm ms-1 me-1'><option value='10'>10</option><option value='20'>20</option></select> {{ __('seller::seller.entries') }}",
+    };
+    let pageLength = 10;
+</script>
 @yield('script')
 <!-- third party js ends -->
 
