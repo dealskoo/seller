@@ -130,5 +130,6 @@ class EventServiceProvider extends ServiceProvider
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
         'seller_locale' => \Dealskoo\Seller\Http\Middleware\SellerLocalization::class,
+        'seller_active'=> \Dealskoo\Seller\Http\Middleware\ActiveAuth::class,
     ];
 ```
