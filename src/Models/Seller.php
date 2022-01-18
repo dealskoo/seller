@@ -6,6 +6,7 @@ use Dealskoo\Seller\Notifications\ResetSellerPassword;
 use Dealskoo\Seller\Notifications\VerifySellerEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentication;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +14,7 @@ use Laravolt\Avatar\Facade as Avatar;
 
 class Seller extends Authentication implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     protected $appends = ['avatar_url'];
 
