@@ -25,7 +25,7 @@
                             <thead class="table-light">
                             <tr>
                                 <th>{{ __('seller::seller.id') }}</th>
-                                <th>{{ __('seller::seller.c_name') }}</th>
+                                <th>{{ __('seller::seller.name') }}</th>
                                 <th>{{ __('seller::seller.created_at') }}</th>
                                 <th>{{ __('seller::seller.updated_at') }}</th>
                                 <th>{{ __('seller::seller.action') }}</th>
