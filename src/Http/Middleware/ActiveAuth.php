@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ActiveAuth
 {
@@ -18,6 +19,13 @@ class ActiveAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if ($request->user('seller') && $request->user('seller')->status) {
+            return $next($request);
+        } else {
+            Auth::guard('seller')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect(route('seller.banned'));
+        }
     }
 }

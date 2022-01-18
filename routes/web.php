@@ -19,6 +19,10 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
 
     Route::get('/locale/{locale}', [LocalizationController::class, '__invoke'])->name('locale');
 
+    Route::get('/banned', function () {
+        return view('seller::auth.banned');
+    })->name('banned');
+
     Route::middleware(['guest:seller'])->group(function () {
         Route::get('/', function () {
             return redirect(\route('seller.dashboard'), 301);
@@ -40,7 +44,7 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
 
     Route::middleware(['auth:seller', 'throttle:6,1'])->post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');
 
-    Route::middleware(['auth:seller', 'verified:seller.verification.notice'])->group(function () {
+    Route::middleware(['auth:seller', 'verified:seller.verification.notice', 'seller_active'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'handle'])->name('dashboard');
 
         Route::get('/search', [SearchController::class, 'handle'])->name('search');
@@ -57,7 +61,7 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
             Route::post('/', [AccountController::class, 'store'])->name('profile');
 
             Route::post('/avatar', [AccountController::class, 'avatar'])->name('avatar');
-            
+
             Route::get('/email', function () {
                 return view('seller::account.email');
             })->name('email');

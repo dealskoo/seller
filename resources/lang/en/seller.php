@@ -55,4 +55,6 @@ return [
     'datatable_pagination' => 'Showing _START_ to _END_ of _TOTAL_',
     'nothing_found' => 'Nothing found',
     'datatable_filtered' => '(filtered from _MAX_ total entries)',
+    'your_account_has_been_banned' => 'Your account has been banned',
+    'if_you_have_any_questions' => 'If you have any questions, please contact our customer service'
 ];
