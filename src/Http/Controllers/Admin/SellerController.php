@@ -1,6 +1,6 @@
 <?php
 
-namespace Dealskoo\Seller\Http\Controllers;
+namespace Dealskoo\Seller\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use Dealskoo\Seller\Models\Seller;

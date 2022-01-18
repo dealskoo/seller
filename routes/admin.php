@@ -1,6 +1,6 @@
 <?php
 
-use Dealskoo\Seller\Http\Controllers\SellerController;
+use Dealskoo\Seller\Http\Controllers\Admin\SellerController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'admin_locale'])->prefix(config('admin.route.prefix'))->name('admin.')->group(function () {
