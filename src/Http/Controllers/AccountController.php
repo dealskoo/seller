@@ -20,7 +20,7 @@ class AccountController extends Controller
         $seller = $request->user();
         $seller->fill($request->only(['name', 'bio', 'company_name', 'website']));
         $seller->save();
-        return redirect()->back()->with('success', __('seller::seller.update_success'));
+        return back()->with('success', __('seller::seller.update_success'));
     }
 
     public function avatar(Request $request)
@@ -46,7 +46,7 @@ class AccountController extends Controller
     {
         $request->validate(['email' => ['required', 'email', 'unique:sellers']]);
         Notification::route('mail', $request->input('email'))->notify(new EmailChangeNotification());
-        return redirect()->back()->withInput($request->only(['email']))->with('success', __('Email Verify Notification Send Success'));
+        return back()->withInput($request->only(['email']))->with('success', __('Email Verify Notification Send Success'));
     }
 
     public function emailVerify(Request $request)
@@ -81,7 +81,7 @@ class AccountController extends Controller
             $seller = $request->user();
             $seller->password = bcrypt($request->input('new_password'));
             $seller->save();
-            return redirect()->back()->with('success', __('seller::seller.update_success'));
+            return back()->with('success', __('seller::seller.update_success'));
         }
     }
 }

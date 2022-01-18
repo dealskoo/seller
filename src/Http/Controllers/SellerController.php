@@ -9,7 +9,16 @@ class SellerController extends Controller
 {
     public function index(Request $request)
     {
-        return view('seller::seller.index');
+        if ($request->ajax()) {
+            return $this->table($request);
+        } else {
+            return view('seller::seller.index');
+        }
+    }
+
+    private function table(Request $request)
+    {
+        return [];
     }
 
     public function show(Request $request)

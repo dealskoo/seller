@@ -31,6 +31,6 @@ class NotificationController extends Controller
     public function allRead(Request $request)
     {
         $request->user()->unreadNotifications->markAsRead();
-        return redirect()->back();
+        return back();
     }
 }

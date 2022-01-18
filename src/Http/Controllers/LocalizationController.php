@@ -13,6 +13,6 @@ class LocalizationController extends Controller
             App::setLocale($locale);
             Session::put('seller_locale', $locale);
         }
-        return redirect()->back();
+        return back();
     }
 }
