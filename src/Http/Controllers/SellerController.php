@@ -4,9 +4,10 @@ namespace Dealskoo\Seller\Http\Controllers;
 
 use Carbon\Carbon;
 use Dealskoo\Seller\Models\Seller;
+use Dealskoo\Admin\Http\Controllers\Controller as AdminController;
 use Illuminate\Http\Request;
 
-class SellerController extends Controller
+class SellerController extends AdminController
 {
     public function index(Request $request)
     {
