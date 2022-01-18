@@ -10,7 +10,7 @@ Route::middleware(['web', 'admin_locale'])->prefix(config('admin.route.prefix'))
     });
 
     Route::middleware(['auth:admin'])->group(function () {
-        Route::resource('sellers', SellerController::class);
+        Route::resource('sellers', SellerController::class)->except(['create', 'store', 'destroy']);
     });
 
 });

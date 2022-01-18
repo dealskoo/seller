@@ -12,16 +12,6 @@ class SellerController extends Controller
         return view('seller::seller.index');
     }
 
-    public function create()
-    {
-        return view('seller::seller.create');
-    }
-
-    public function store(Request $request)
-    {
-
-    }
-
     public function show(Request $request)
     {
         return view('seller::seller.show');
@@ -33,11 +23,6 @@ class SellerController extends Controller
     }
 
     public function update($id)
-    {
-
-    }
-
-    public function destroy($id)
     {
 
     }
