@@ -8,7 +8,7 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a
-                                href="{{ route('seller.dashboard') }}">{{ __('admin::admin.dashboard') }}</a></li>
+                                href="{{ route('admin.dashboard') }}">{{ __('admin::admin.dashboard') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('seller::seller.sellers_list') }}</li>
                     </ol>
                 </div>
@@ -67,19 +67,6 @@
                     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
                     $('#sellers_table tr td:nth-child(2)').addClass('table-user');
                     $('#sellers_table tr td:nth-child(8)').addClass('table-action');
-                    $('.delete-btn').on('click', function (e) {
-                        let table = $('#' + $(this).data('table'));
-                        let url = $(this).data('url');
-                        $.ajax({
-                            url: url,
-                            type: 'DELETE',
-                            processData: false,
-                            contentType: false,
-                            success: function (data) {
-                                table.DataTable().ajax.reload();
-                            }
-                        });
-                    });
                 }
             })
         });
