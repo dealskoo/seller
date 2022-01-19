@@ -33,7 +33,8 @@ class Seller extends Authentication implements MustVerifyEmail
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime'
+        'email_verified_at' => 'datetime',
+        'status' => 'boolean',
     ];
 
     public function getAvatarUrlAttribute()
