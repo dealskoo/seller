@@ -3,6 +3,8 @@
 namespace Dealskoo\Seller\Providers;
 
 use Dealskoo\Admin\Facades\AdminMenu;
+use Dealskoo\Admin\Facades\PermissionManager;
+use Dealskoo\Admin\Permission;
 use Dealskoo\Seller\Contracts\Dashboard;
 use Dealskoo\Seller\Contracts\Searcher;
 use Dealskoo\Seller\Contracts\Support\DefaultDashboard;
@@ -67,6 +69,11 @@ class SellerServiceProvider extends ServiceProvider
             $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
         });
 
-        AdminMenu::route('admin.sellers.index', 'seller::seller.sellers', [], ['icon' => 'uil-shop'])->order(5);
+        AdminMenu::route('admin.sellers.index', 'seller::seller.sellers', [], ['icon' => 'uil-shop', 'permission' => 'sellers.index'])->order(5);
+        PermissionManager::add(new Permission('sellers.index', 'Sellers List'));
+        PermissionManager::add(new Permission('sellers.show', 'View Seller'), 'sellers.index');
+        PermissionManager::add(new Permission('sellers.create', 'Create Seller'), 'sellers.index');
+        PermissionManager::add(new Permission('sellers.edit', 'Edit Seller'), 'sellers.index');
+        PermissionManager::add(new Permission('sellers.destroy', 'Destroy Seller'), 'sellers.index');
     }
 }
