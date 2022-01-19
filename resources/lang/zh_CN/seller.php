@@ -58,5 +58,11 @@ return [
     'your_account_has_been_banned' => '您的账号已被禁用',
     'if_you_have_any_questions' => '如何有任何问题，请联系我们客服',
     'active' => '可用',
-    'inactive' => '禁用'
+    'inactive' => '禁用',
+    'id' => '编号',
+    'created_at' => '创建时间',
+    'updated_at' => '更新时间',
+    'action' => '操作',
+    'slug' => '标识',
+    'country' => '国家'
 ];

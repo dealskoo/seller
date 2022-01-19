@@ -23,7 +23,7 @@ class SellerController extends AdminController
         $start = $request->input('start', 0);
         $limit = $request->input('length', 10);
         $keyword = $request->input('search.value');
-        $columns = ['id', 'name', 'created_at', 'updated_at'];
+        $columns = ['id', 'name', 'slug', 'email', 'country_id', 'created_at', 'updated_at'];
         $column = $columns[$request->input('order.0.column', 0)];
         $desc = $request->input('order.0.dir', 'desc');
         $query = Seller::query();
@@ -37,7 +37,10 @@ class SellerController extends AdminController
         foreach ($sellers as $seller) {
             $row = [];
             $row[] = $seller->id;
-            $row[] = $seller->name;
+            $row[] = '<img src="' . $seller->avatar_url . '" alt="' . $seller->name . '" title="' . $seller->name . '" class="me-2 rounded-circle"><p class="m-0 d-inline-block align-middle font-16">' . $seller->name . '</p>';
+            $row[] = $seller->slug;
+            $row[] = $seller->email;
+            $row[] = '';
             $row[] = Carbon::parse($seller->created_at)->format('Y-m-d H:i:s');
             $row[] = Carbon::parse($seller->updated_at)->format('Y-m-d H:i:s');
 

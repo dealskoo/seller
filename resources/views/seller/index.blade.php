@@ -26,6 +26,9 @@
                             <tr>
                                 <th>{{ __('seller::seller.id') }}</th>
                                 <th>{{ __('seller::seller.name') }}</th>
+                                <th>{{ __('seller::seller.slug') }}</th>
+                                <th>{{ __('seller::seller.email') }}</th>
+                                <th>{{ __('seller::seller.country') }}</th>
                                 <th>{{ __('seller::seller.created_at') }}</th>
                                 <th>{{ __('seller::seller.updated_at') }}</th>
                                 <th>{{ __('seller::seller.action') }}</th>
@@ -50,6 +53,9 @@
                 "language": language,
                 "pageLength": pageLength,
                 "columns": [
+                    {'orderable': true},
+                    {'orderable': true},
+                    {'orderable': true},
                     {'orderable': true},
                     {'orderable': true},
                     {'orderable': true},

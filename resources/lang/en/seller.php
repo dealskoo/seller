@@ -58,5 +58,11 @@ return [
     'your_account_has_been_banned' => 'Your account has been banned',
     'if_you_have_any_questions' => 'If you have any questions, please contact our customer service',
     'active' => 'Active',
-    'inactive' => 'Inactive'
+    'inactive' => 'Inactive',
+    'id' => 'Id',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'action' => 'Action',
+    'slug' => 'Slug',
+    'country' => 'Country'
 ];

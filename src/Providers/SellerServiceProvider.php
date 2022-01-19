@@ -72,8 +72,6 @@ class SellerServiceProvider extends ServiceProvider
         AdminMenu::route('admin.sellers.index', 'seller::seller.sellers', [], ['icon' => 'uil-shop', 'permission' => 'sellers.index'])->order(5);
         PermissionManager::add(new Permission('sellers.index', 'Sellers List'));
         PermissionManager::add(new Permission('sellers.show', 'View Seller'), 'sellers.index');
-        PermissionManager::add(new Permission('sellers.create', 'Create Seller'), 'sellers.index');
         PermissionManager::add(new Permission('sellers.edit', 'Edit Seller'), 'sellers.index');
-        PermissionManager::add(new Permission('sellers.destroy', 'Destroy Seller'), 'sellers.index');
     }
 }
