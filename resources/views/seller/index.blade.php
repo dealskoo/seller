@@ -66,7 +66,7 @@
                 "drawCallback": function () {
                     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
                     $('#sellers_table tr td:nth-child(2)').addClass('table-user');
-                    $('#sellers_table tr td:nth-child(5)').addClass('table-action');
+                    $('#sellers_table tr td:nth-child(8)').addClass('table-action');
                     $('.delete-btn').on('click', function (e) {
                         let table = $('#' + $(this).data('table'));
                         let url = $(this).data('url');
