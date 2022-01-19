@@ -56,5 +56,7 @@ return [
     'nothing_found' => '没有数据',
     'datatable_filtered' => '(从 _MAX_ 总计条目中筛选)',
     'your_account_has_been_banned' => '您的账号已被禁用',
-    'if_you_have_any_questions' => '如何有任何问题，请联系我们客服'
+    'if_you_have_any_questions' => '如何有任何问题，请联系我们客服',
+    'active' => '可用',
+    'inactive' => '禁用'
 ];
