@@ -19,12 +19,17 @@ class Seller extends Authentication implements MustVerifyEmail
     protected $appends = ['avatar_url'];
 
     protected $fillable = [
+        'slug',
+        'avatar',
         'name',
         'bio',
         'email',
         'password',
+        'country_id',
         'company_name',
         'website',
+        'status',
+        'source'
     ];
 
     protected $hidden = [

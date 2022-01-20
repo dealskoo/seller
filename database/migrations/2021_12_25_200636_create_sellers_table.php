@@ -26,6 +26,7 @@ class CreateSellersTable extends Migration
             $table->string('company_name')->nullable();
             $table->string('website')->nullable();
             $table->boolean('status')->default(true);
+            $table->string('source')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
