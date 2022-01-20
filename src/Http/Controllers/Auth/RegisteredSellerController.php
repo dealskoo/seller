@@ -21,13 +21,15 @@ class RegisteredSellerController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:sellers'],
-            'password' => ['required', 'confirmed', Rules\Password::min(config('seller.password_length'))]
+            'password' => ['required', 'confirmed', Rules\Password::min(config('seller.password_length'))],
+            'country_id' => ['required']
         ]);
 
         $seller = Seller::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'country_id' => $request->country_id,
         ]);
 
         event(new SellerRegistered($seller));

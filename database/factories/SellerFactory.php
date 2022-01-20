@@ -4,6 +4,7 @@ namespace Database\Factories\Dealskoo\Seller\Models;
 
 use Dealskoo\Seller\Models\Seller;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class SellerFactory extends Factory
 {
@@ -11,6 +12,23 @@ class SellerFactory extends Factory
 
     public function definition()
     {
-        return [];
+        return [
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+            'country_id' => 1,
+            'status' => true,
+        ];
+    }
+
+    public function unverified()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email_verified_at' => null,
+            ];
+        });
     }
 }
