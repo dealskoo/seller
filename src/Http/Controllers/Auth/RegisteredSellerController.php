@@ -22,7 +22,7 @@ class RegisteredSellerController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:sellers'],
             'password' => ['required', 'confirmed', Rules\Password::min(config('seller.password_length'))],
-            'country_id' => ['required']
+            'country_id' => ['required', 'exists:countries,id']
         ]);
 
         $seller = Seller::create([
@@ -30,6 +30,7 @@ class RegisteredSellerController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'country_id' => $request->country_id,
+            'source' => $request->source,
         ]);
 
         event(new SellerRegistered($seller));
