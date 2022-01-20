@@ -17,7 +17,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Dealskoo\\Seller\\": "src/"
+            "Dealskoo\\Seller\\": "src/",
+            "Database\\Factories\\Dealskoo\\Seller\\Models\\": "database/factories/"
         }
     },
     "autoload-dev": {
