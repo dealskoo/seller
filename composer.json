@@ -38,7 +38,7 @@
         ]
     },
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1",
         "dealskoo/admin": "dev-master",
         "dealskoo/country": "dev-master",
         "laravel/framework": ">=7.20",
