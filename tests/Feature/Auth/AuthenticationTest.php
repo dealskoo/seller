@@ -41,4 +41,24 @@ class AuthenticationTest extends TestCase
 
         $this->assertGuest();
     }
+
+    public function test_user_not_authenticate_inactive()
+    {
+        $response = $this->get(route('seller.banned'));
+        $response->assertStatus(200);
+    }
+
+    public function test_user_authenticate_inactive()
+    {
+        $seller = Seller::factory()->inactive()->create();
+        $response = $this->actingAs($seller, 'seller')->get(route('seller.dashboard'));
+        $response->assertRedirect(route('seller.banned'));
+    }
+
+    public function test_user_logout()
+    {
+        $seller = Seller::factory()->create();
+        $response = $this->actingAs($seller, 'seller')->post(route('seller.logout'));
+        $response->assertRedirect(route('seller.login'));
+    }
 }

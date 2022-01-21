@@ -4,11 +4,13 @@ namespace Dealskoo\Seller\Tests\Feature\Auth;
 
 use Dealskoo\Seller\Events\SellerEmailVerified;
 use Dealskoo\Seller\Models\Seller;
+use Dealskoo\Seller\Notifications\VerifySellerEmail;
 use Dealskoo\Seller\Tests\TestCase;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
 
 class EmailVerificationTest extends TestCase
@@ -62,5 +64,15 @@ class EmailVerificationTest extends TestCase
         $this->actingAs($seller, 'seller')->get($verificationUrl);
 
         $this->assertFalse($seller->fresh()->hasVerifiedEmail());
+    }
+
+    public function test_resend_email()
+    {
+        Notification::fake();
+        $seller = Seller::factory()->unverified()->create();
+
+        $this->actingAs($seller, 'seller')->post(route('seller.verification.send'));
+
+        Notification::assertSentTo($seller, VerifySellerEmail::class);
     }
 }
