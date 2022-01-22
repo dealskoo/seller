@@ -72,12 +72,13 @@ class SellerController extends AdminController
         ];
     }
 
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
         if (!$request->user()->canDo('sellers.show')) {
             abort(403);
         }
-        return view('seller::seller.show');
+        $seller = Seller::query()->findOrFail($id);
+        return view('seller::seller.show', ['seller' => $seller]);
     }
 
     public function edit(Request $request, $id)
@@ -85,6 +86,8 @@ class SellerController extends AdminController
         if (!$request->user()->canDo('sellers.edit')) {
             abort(403);
         }
+        $seller = Seller::query()->findOrFail($id);
+        return view('seller::seller.show', ['seller' => $seller]);
     }
 
     public function update(Request $request, $id)
@@ -92,5 +95,12 @@ class SellerController extends AdminController
         if (!$request->user()->canDo('sellers.edit')) {
             abort(403);
         }
+        $request->validate([
+            'status' => ['required', 'boolean']
+        ]);
+        $seller = Seller::query()->findOrFail($id);
+        $seller->status = $request->boolean('status');
+        $seller->save();
+        return back()->with('success', __('admin::admin.update_success'));
     }
 }
