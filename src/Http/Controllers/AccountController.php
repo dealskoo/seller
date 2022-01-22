@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use function PHPUnit\Framework\throwException;
 
 class AccountController extends Controller
@@ -15,10 +16,13 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required']
+            'name' => ['required', 'unique:sellers,name,' . $request->user()->id . ',id']
         ]);
         $seller = $request->user();
         $seller->fill($request->only(['name', 'bio', 'company_name', 'website']));
+        if (!$seller->slug) {
+            $seller->slug = Str::slug($request->name, '_');
+        }
         $seller->save();
         return back()->with('success', __('seller::seller.update_success'));
     }

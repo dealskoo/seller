@@ -64,5 +64,7 @@ return [
     'updated_at' => '更新时间',
     'action' => '操作',
     'slug' => '标识',
-    'country' => '国家'
+    'country' => '国家',
+    'target_market' => '目标市场',
+    'source' => '来源',
 ];

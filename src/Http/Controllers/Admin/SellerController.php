@@ -11,6 +11,9 @@ class SellerController extends AdminController
 {
     public function index(Request $request)
     {
+        if (!$request->user()->canDo('sellers.index')) {
+            abort(403);
+        }
         if ($request->ajax()) {
             return $this->table($request);
         } else {
@@ -29,25 +32,35 @@ class SellerController extends AdminController
         $query = Seller::query();
         if ($keyword) {
             $query->where('name', 'like', '%' . $keyword . '%');
+            $query->orWhere('slug', 'like', '%' . $keyword . '%');
+            $query->orWhere('email', 'like', '%' . $keyword . '%');
         }
         $query->orderBy($column, $desc);
         $count = $query->count();
         $sellers = $query->skip($start)->take($limit)->get();
         $rows = [];
+        $can_view = $request->user()->canDo('sellers.show');
+        $can_edit = $request->user()->canDo('sellers.edit');
         foreach ($sellers as $seller) {
             $row = [];
             $row[] = $seller->id;
             $row[] = '<img src="' . $seller->avatar_url . '" alt="' . $seller->name . '" title="' . $seller->name . '" class="me-2 rounded-circle"><p class="m-0 d-inline-block align-middle font-16">' . $seller->name . '</p>';
             $row[] = $seller->slug;
             $row[] = $seller->email;
-            $row[] = '';
+            $row[] = $seller->country->name;
+            $row[] = $seller->source;
             $row[] = Carbon::parse($seller->created_at)->format('Y-m-d H:i:s');
             $row[] = Carbon::parse($seller->updated_at)->format('Y-m-d H:i:s');
 
-            $view_link = '<a href="' . route('admin.sellers.show', $seller) . '" class="action-icon"><i class="mdi mdi-eye"></i></a>';
+            $view_link = '';
+            if ($can_view) {
+                $view_link = '<a href="' . route('admin.sellers.show', $seller) . '" class="action-icon"><i class="mdi mdi-eye"></i></a>';
+            }
 
-            $edit_link = '<a href="' . route('admin.sellers.edit', $seller) . '" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>';
-
+            $edit_link = '';
+            if ($can_edit) {
+                $edit_link = '<a href="' . route('admin.sellers.edit', $seller) . '" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>';
+            }
             $row[] = $view_link . $edit_link;
             $rows[] = $row;
         }
@@ -61,16 +74,23 @@ class SellerController extends AdminController
 
     public function show(Request $request)
     {
+        if (!$request->user()->canDo('sellers.show')) {
+            abort(403);
+        }
         return view('seller::seller.show');
     }
 
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-
+        if (!$request->user()->canDo('sellers.edit')) {
+            abort(403);
+        }
     }
 
     public function update(Request $request, $id)
     {
-
+        if (!$request->user()->canDo('sellers.edit')) {
+            abort(403);
+        }
     }
 }

@@ -162,7 +162,7 @@
                                         </span>
                                 <span>
                                             <span class="account-user-name">{{ Auth::user()->name }}</span>
-                                            <span class="account-position">{{ Auth::user()->email }}</span>
+                                            <span class="account-position">{{ Auth::user()->country->name }}</span>
                                         </span>
                             </a>
                             <div

@@ -64,5 +64,7 @@ return [
     'updated_at' => 'Updated At',
     'action' => 'Action',
     'slug' => 'Slug',
-    'country' => 'Country'
+    'country' => 'Country',
+    'target_market' => 'Target market',
+    'source' => 'Source',
 ];

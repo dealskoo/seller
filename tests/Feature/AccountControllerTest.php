@@ -2,6 +2,7 @@
 
 namespace Dealskoo\Seller\Tests\Feature;
 
+use Dealskoo\Seller\Models\Seller;
 use Dealskoo\Seller\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -11,7 +12,9 @@ class AccountControllerTest extends TestCase
 
     public function test_profile()
     {
-        $response = $this->get('seller.account.profile');
+        $seller = Seller::factory()->create();
+        $response = $this->actingAs($seller, 'seller')->get('seller.account.profile');
+        $response->assertStatus(200);
     }
 
     public function test_update_profile()

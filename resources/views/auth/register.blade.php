@@ -32,10 +32,19 @@
             <!-- form -->
             <form action="{{ route('seller.register') }}" method="post">
                 @csrf
+                <input type="hidden" name="source" value="{{ request('s') }}">
                 <div class="mb-3">
                     <label for="full_name" class="form-label">{{ __('seller::auth.full_name') }}</label>
                     <input class="form-control" type="text" id="full_name" name="name" value="{{ old('name') }}"
                            placeholder="{{ __('seller::auth.full_name_placeholder') }}" required autofocus tabindex="1">
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">{{ __('seller::seller.target_market') }}</label>
+                    <select name="country_id" id="country" class="form-select">
+                        @foreach($countries as $country)
+                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('seller::auth.email_address') }}</label>

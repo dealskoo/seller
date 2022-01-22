@@ -2,6 +2,7 @@
 
 namespace Dealskoo\Seller\Models;
 
+use Dealskoo\Country\Models\Country;
 use Dealskoo\Seller\Notifications\ResetSellerPassword;
 use Dealskoo\Seller\Notifications\VerifySellerEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -62,5 +63,10 @@ class Seller extends Authentication implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifySellerEmail());
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

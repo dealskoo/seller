@@ -22,16 +22,16 @@
             @endisset
             <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.name') }} :</strong> <span
                     class="ms-2">{{ Auth::user()->name }}</span></p>
-
-            <p class="text-muted mb-2 font-13"><strong>{{ __('seller::seller.email') }} :</strong> <span
+            <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.target_market') }} :</strong> <span
+                    class="ms-2">{{ Auth::user()->country->name }}</span></p>
+            <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.email') }} :</strong> <span
                     class="ms-2 ">{{ Auth::user()->email }}</span>
             </p>
             <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.company_name') }} :</strong> <span
                     class="ms-2">{{ Auth::user()->company_name }}</span>
             </p>
-            <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.website') }} :</strong> <span class="ms-2">{{ Auth::user()->website }}</span>
-            </p>
-            <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.level') }} :</strong> <span class="ms-2">General</span>
+            <p class="text-muted mb-1 font-13"><strong>{{ __('seller::seller.website') }} :</strong> <span
+                    class="ms-2">{{ Auth::user()->website }}</span>
             </p>
         </div>
     </div> <!-- end card-body -->
