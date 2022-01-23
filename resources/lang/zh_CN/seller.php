@@ -53,6 +53,7 @@ return [
     'display' => '显示',
     'entries' => '数据',
     'datatable_pagination' => '显示 _START_ 到 _END_ 共 _TOTAL_',
+    'datatable_info_empty' => '显示 _START_ 到 _END_ 共 _TOTAL_',
     'nothing_found' => '没有数据',
     'datatable_filtered' => '(从 _MAX_ 总计条目中筛选)',
     'your_account_has_been_banned' => '您的账号已被禁用',

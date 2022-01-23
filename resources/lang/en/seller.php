@@ -53,6 +53,7 @@ return [
     'display' => 'Display',
     'entries' => 'Entries',
     'datatable_pagination' => 'Showing _START_ to _END_ of _TOTAL_',
+    'datatable_info_empty' => 'Showing _START_ to _END_ of _TOTAL_',
     'nothing_found' => 'Nothing found',
     'datatable_filtered' => '(filtered from _MAX_ total entries)',
     'your_account_has_been_banned' => 'Your account has been banned',

@@ -354,6 +354,7 @@
         "processing": "<div class=\"spinner-border text-danger\" role=\"status\"></div>",
         "zeroRecords": "{{ __('seller::seller.nothing_found') }}",
         "info": "{{ __('seller::seller.datatable_pagination') }}",
+        "infoEmpty": "{{ __('seller::seller.datatable_info_empty') }}",
         "infoFiltered": "{{ __('seller::seller.datatable_filtered') }}",
         "search": "{{ __('seller::seller.search') }}",
         "lengthMenu": "{{ __('admin::seller.display') }} <select class='form-select form-select-sm ms-1 me-1'><option value='10'>10</option><option value='20'>20</option></select> {{ __('seller::seller.entries') }}",

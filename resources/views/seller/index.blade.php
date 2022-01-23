@@ -70,7 +70,7 @@
                 "drawCallback": function () {
                     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
                     $('#sellers_table tr td:nth-child(2)').addClass('table-user');
-                    $('#sellers_table tr td:nth-child(8)').addClass('table-action');
+                    $('#sellers_table tr td:nth-child(10)').addClass('table-action');
                 }
             })
         });
