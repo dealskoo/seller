@@ -3,7 +3,6 @@
 namespace Dealskoo\Seller\Http\Controllers;
 
 use Dealskoo\Seller\Contracts\Dashboard;
-use Dealskoo\Seller\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
