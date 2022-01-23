@@ -30,6 +30,7 @@
                                 <th>{{ __('seller::seller.email') }}</th>
                                 <th>{{ __('seller::seller.country') }}</th>
                                 <th>{{ __('seller::seller.source') }}</th>
+                                <th>{{ __('seller::seller.status') }}</th>
                                 <th>{{ __('seller::seller.created_at') }}</th>
                                 <th>{{ __('seller::seller.updated_at') }}</th>
                                 <th>{{ __('seller::seller.action') }}</th>
@@ -54,6 +55,7 @@
                 "language": language,
                 "pageLength": pageLength,
                 "columns": [
+                    {'orderable': true},
                     {'orderable': true},
                     {'orderable': true},
                     {'orderable': true},

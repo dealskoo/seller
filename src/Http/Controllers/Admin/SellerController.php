@@ -26,7 +26,7 @@ class SellerController extends AdminController
         $start = $request->input('start', 0);
         $limit = $request->input('length', 10);
         $keyword = $request->input('search.value');
-        $columns = ['id', 'name', 'slug', 'email', 'country_id', 'created_at', 'updated_at'];
+        $columns = ['id', 'name', 'slug', 'email', 'country_id', 'source', 'status', 'created_at', 'updated_at'];
         $column = $columns[$request->input('order.0.column', 0)];
         $desc = $request->input('order.0.dir', 'desc');
         $query = Seller::query();
@@ -49,6 +49,7 @@ class SellerController extends AdminController
             $row[] = $seller->email;
             $row[] = $seller->country->name;
             $row[] = $seller->source;
+            $row[] = $seller->status ? '<span class="badge bg-success">' . __('seller::seller.active') . '</span>' : '<span class="badge bg-danger">' . __('seller::seller.inactive') . '</span>';
             $row[] = Carbon::parse($seller->created_at)->format('Y-m-d H:i:s');
             $row[] = Carbon::parse($seller->updated_at)->format('Y-m-d H:i:s');
 
@@ -87,7 +88,7 @@ class SellerController extends AdminController
             abort(403);
         }
         $seller = Seller::query()->findOrFail($id);
-        return view('seller::seller.show', ['seller' => $seller]);
+        return view('seller::seller.edit', ['seller' => $seller]);
     }
 
     public function update(Request $request, $id)
@@ -95,11 +96,8 @@ class SellerController extends AdminController
         if (!$request->user()->canDo('sellers.edit')) {
             abort(403);
         }
-        $request->validate([
-            'status' => ['required', 'boolean']
-        ]);
         $seller = Seller::query()->findOrFail($id);
-        $seller->status = $request->boolean('status');
+        $seller->status = $request->boolean('status', false);
         $seller->save();
         return back()->with('success', __('admin::admin.update_success'));
     }

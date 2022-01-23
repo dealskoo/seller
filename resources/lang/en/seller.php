@@ -68,5 +68,7 @@ return [
     'target_market' => 'Target market',
     'source' => 'Source',
     'country_placeholder' => 'Select a country',
-    'seller_information' => 'Seller information'
+    'seller_information' => 'Seller information',
+    'edit_seller' => 'Edit Seller',
+    'status' => 'Status',
 ];

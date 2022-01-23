@@ -69,4 +69,6 @@ return [
     'source' => '来源',
     'country_placeholder' => '选择国家',
     'seller_information' => '商家信息',
+    'edit_seller' => '编辑商家',
+    'status' => '状态',
 ];
