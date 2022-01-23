@@ -46,12 +46,12 @@ class EmailChangeNotification extends Notification
     public function toMail($notifiable)
     {
         Session::put('seller_email_change_verify', $notifiable->routes['mail']);
-        $url = $this->url($notifiable);
+        $this->url = $this->url($notifiable);
         return (new MailMessage)
             ->subject(__('Email Verify Notification'))
             ->line(__('You are receiving this email because we received an email change request for your account.'))
-            ->action(__('Verify Email'), $url)
-            ->line(__('This verify email link will expire in :count minutes.', ['count' => config('auth.passwords.admins.expire')]))
+            ->action(__('Verify Email'), $this->url)
+            ->line(__('This verify email link will expire in :count minutes.', ['count' => config('auth.passwords.sellers.expire')]))
             ->line(__('If you did not request an email change, no further action is required.'));
     }
 
