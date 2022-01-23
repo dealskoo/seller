@@ -2,6 +2,8 @@
 
 namespace Dealskoo\Seller\Tests\Feature\Admin;
 
+use Dealskoo\Admin\Models\Admin;
+use Dealskoo\Seller\Models\Seller;
 use Dealskoo\Seller\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -11,26 +13,43 @@ class SellerControllerTest extends TestCase
 
     public function test_index()
     {
-        $this->get(route('seller.sellers.index'));
+        $admin = Admin::factory()->isOwner()->create();
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.sellers.index'));
+        $response->assertStatus(200);
     }
 
     public function test_table()
     {
-        $this->get(route('seller.sellers.index', ['HTTP_X-Requested-With' => 'XMLHttpRequest']));
+        $admin = Admin::factory()->isOwner()->create();
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.sellers.index', ['HTTP_X-Requested-With' => 'XMLHttpRequest']));
+        $response->assertStatus(200);
     }
 
     public function test_show()
     {
-        $this->get(route('seller.sellers.show'));
+        $admin = Admin::factory()->isOwner()->create();
+        $seller = Seller::factory()->create();
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.sellers.show', $seller));
+        $response->assertStatus(200);
     }
 
     public function test_edit()
     {
-        $this->get(route('seller.sellers.edit'));
+        $admin = Admin::factory()->isOwner()->create();
+        $seller = Seller::factory()->create();
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.sellers.edit', $seller));
+        $response->assertStatus(200);
     }
 
     public function test_update()
     {
-        $this->put(route('seller.sellers.update'));
+        $admin = Admin::factory()->isOwner()->create();
+        $seller = Seller::factory()->create();
+        $response = $this->actingAs($admin, 'admin')->put(route('admin.sellers.update', $seller), [
+            'status' => false
+        ]);
+        $response->assertStatus(302);
+        $seller->refresh();
+        $this->assertEquals(false, $seller->status);
     }
 }
