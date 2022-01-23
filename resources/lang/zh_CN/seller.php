@@ -67,4 +67,6 @@ return [
     'country' => '国家',
     'target_market' => '目标市场',
     'source' => '来源',
+    'country_placeholder' => '选择国家',
+    'seller_information' => '商家信息',
 ];

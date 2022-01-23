@@ -1,6 +1,6 @@
 @extends('admin::layouts.panel')
 
-@section('title',__('admin::admin.dashboard'))
+@section('title',__('seller::seller.edit_seller'))
 @section('body')
 
 @endsection
