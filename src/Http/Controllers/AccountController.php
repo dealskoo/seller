@@ -5,6 +5,7 @@ namespace Dealskoo\Seller\Http\Controllers;
 use Dealskoo\Seller\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -84,7 +85,7 @@ class AccountController extends Controller
             ]);
         } else {
             $seller = $request->user();
-            $seller->password = bcrypt($request->input('new_password'));
+            $seller->password = Hash::make($request->input('new_password'));
             $seller->save();
             return back()->with('success', __('seller::seller.update_success'));
         }

@@ -7,6 +7,7 @@ use Dealskoo\Seller\Notifications\EmailChangeNotification;
 use Dealskoo\Seller\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 
 class AccountControllerTest extends TestCase
@@ -91,7 +92,7 @@ class AccountControllerTest extends TestCase
         $password = '12345678';
         $new_password = '23456789';
         $seller = Seller::factory()->create();
-        $seller->password = bcrypt($password);
+        $seller->password = Hash::make($password);
         $seller->save();
         $response = $this->actingAs($seller, 'seller')->post(route('seller.account.password'), [
             'password' => $password,
