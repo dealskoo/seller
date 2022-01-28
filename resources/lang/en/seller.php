@@ -72,4 +72,6 @@ return [
     'seller_information' => 'Seller information',
     'edit_seller' => 'Edit Seller',
     'status' => 'Status',
+    'auth_title' => 'Welcome to the seller center!',
+    'auth_description' => 'Committed to providing sellers with marketing solutions',
 ];

@@ -72,4 +72,6 @@ return [
     'seller_information' => '商家信息',
     'edit_seller' => '编辑商家',
     'status' => '状态',
+    'auth_title' => '欢迎登录卖家中心！',
+    'auth_description' => '致力于为卖家提供营销解决方案',
 ];
