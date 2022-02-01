@@ -71,9 +71,9 @@ class AccountController extends Controller
     public function password(Request $request)
     {
         $request->validate([
-            'password' => ['required', 'min:' . config('seller.password_length')],
-            'new_password' => ['required', 'min:' . config('seller.password_length')],
-            'new_password_confirmation' => ['required', 'min:' . config('seller.password_length'), 'same:new_password']
+            'password' => ['required', 'min:' . config('auth.password_length')],
+            'new_password' => ['required', 'min:' . config('auth.password_length')],
+            'new_password_confirmation' => ['required', 'min:' . config('auth.password_length'), 'same:new_password']
         ]);
 
         if (!$this->guard()->validate([

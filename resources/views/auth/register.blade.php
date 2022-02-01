@@ -55,7 +55,7 @@
                     <label for="password" class="form-label">{{ __('seller::auth.password') }}</label>
                     <div class="input-group">
                         <input class="form-control" type="password" required id="password" name="password" tabindex="3"
-                               minlength="{{ config('seller.password_length') }}"
+                               minlength="{{ config('auth.password_length') }}"
                                placeholder="{{ __('seller::auth.password_placeholder') }}">
                         <div class="input-group-text" data-password="false">
                             <span class="password-eye"></span>
@@ -67,7 +67,7 @@
                            class="form-label">{{ __('seller::auth.confirm_password') }}</label>
                     <div class="input-group">
                         <input class="form-control" type="password" required id="password_confirmation" tabindex="4"
-                               name="password_confirmation" minlength="{{ config('seller.password_length') }}"
+                               name="password_confirmation" minlength="{{ config('auth.password_length') }}"
                                placeholder="{{ __('seller::auth.confirm_password_placeholder') }}">
                         <div class="input-group-text" data-password="false">
                             <span class="password-eye"></span>

@@ -47,7 +47,7 @@
                                            class="form-label">{{ __('seller::seller.password') }}</label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="password" required
-                                               minlength="{{ config('seller.password_length') }}" name="password" autofocus
+                                               minlength="{{ config('auth.password_length') }}" name="password" autofocus
                                                tabindex="1"
                                                placeholder="{{ __('seller::seller.password_placeholder') }}">
                                         <div class="input-group-text" data-password="false">
@@ -65,7 +65,7 @@
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="new_password"
                                                name="new_password"
-                                               minlength="{{ config('seller.password_length') }}" tabindex="2"
+                                               minlength="{{ config('auth.password_length') }}" tabindex="2"
                                                placeholder="{{ __('seller::seller.new_password_placeholder') }}">
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
@@ -82,7 +82,7 @@
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="confirm_new_password"
                                                name="new_password_confirmation" required tabindex="3"
-                                               minlength="{{ config('seller.password_length') }}"
+                                               minlength="{{ config('auth.password_length') }}"
                                                placeholder="{{ __('seller::seller.confirm_new_password_placeholder') }}">
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>

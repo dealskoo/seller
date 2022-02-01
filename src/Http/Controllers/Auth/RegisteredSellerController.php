@@ -24,7 +24,7 @@ class RegisteredSellerController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:sellers'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:sellers'],
-            'password' => ['required', 'confirmed', Rules\Password::min(config('seller.password_length'))],
+            'password' => ['required', 'confirmed', Rules\Password::min(config('auth.password_length'))],
             'country_id' => ['required', 'exists:countries,id']
         ]);
 
