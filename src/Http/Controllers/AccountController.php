@@ -2,6 +2,7 @@
 
 namespace Dealskoo\Seller\Http\Controllers;
 
+use Dealskoo\Seller\Exceptions\SellerException;
 use Dealskoo\Seller\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use function PHPUnit\Framework\throwException;
+use Illuminate\Validation\Rules;
 
 class AccountController extends Controller
 {
@@ -28,6 +29,9 @@ class AccountController extends Controller
         return back()->with('success', __('seller::seller.update_success'));
     }
 
+    /**
+     * @throws SellerException
+     */
     public function avatar(Request $request)
     {
         $request->validate([
@@ -43,9 +47,8 @@ class AccountController extends Controller
             $seller->save();
             return ['url' => Storage::url($path)];
         } else {
-            throwException(__('Please upload file'));
+            throw new SellerException(__('Please upload file'));
         }
-        return [];
     }
 
     public function email(Request $request)
@@ -72,8 +75,7 @@ class AccountController extends Controller
     {
         $request->validate([
             'password' => ['required', 'min:' . config('auth.password_length')],
-            'new_password' => ['required', 'min:' . config('auth.password_length')],
-            'new_password_confirmation' => ['required', 'min:' . config('auth.password_length'), 'same:new_password']
+            'new_password' => ['required', 'confirmed', Rules\Password::min(config('auth.password_length'))],
         ]);
 
         if (!$this->guard()->validate([
