@@ -37,7 +37,7 @@
 
             <!-- Footer-->
             <footer class="footer footer-alt">
-                <p class="text-muted">{{ config('seller.copyright') }}</p>
+                <p class="text-muted">{!! config('seller.copyright') !!}</p>
             </footer>
 
         </div> <!-- end .card-body -->
