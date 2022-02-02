@@ -17,7 +17,7 @@ class SellerController extends AdminController
         if ($request->ajax()) {
             return $this->table($request);
         } else {
-            return view('seller::seller.index');
+            return view('seller::admin.seller.index');
         }
     }
 
@@ -79,7 +79,7 @@ class SellerController extends AdminController
             abort(403);
         }
         $seller = Seller::query()->findOrFail($id);
-        return view('seller::seller.show', ['seller' => $seller]);
+        return view('seller::admin.seller.show', ['seller' => $seller]);
     }
 
     public function edit(Request $request, $id)
@@ -88,7 +88,7 @@ class SellerController extends AdminController
             abort(403);
         }
         $seller = Seller::query()->findOrFail($id);
-        return view('seller::seller.edit', ['seller' => $seller]);
+        return view('seller::admin.seller.edit', ['seller' => $seller]);
     }
 
     public function update(Request $request, $id)
