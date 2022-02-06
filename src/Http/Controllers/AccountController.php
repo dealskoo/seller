@@ -38,17 +38,13 @@ class AccountController extends Controller
             'file' => ['required', 'image', 'max:1000']
         ]);
 
-        if ($request->hasFile('file')) {
-            $image = $request->file('file');
-            $seller = $request->user();
-            $filename = $seller->id . '.' . $image->guessExtension();
-            $path = $request->file('file')->storeAs('seller/avatars', $filename);
-            $seller->avatar = $path;
-            $seller->save();
-            return ['url' => Storage::url($path)];
-        } else {
-            throw new SellerException(__('Please upload file'));
-        }
+        $image = $request->file('file');
+        $seller = $request->user();
+        $filename = $seller->id . '.' . $image->guessExtension();
+        $path = $request->file('file')->storeAs('seller/avatars', $filename);
+        $seller->avatar = $path;
+        $seller->save();
+        return ['url' => Storage::url($path)];
     }
 
     public function email(Request $request)
