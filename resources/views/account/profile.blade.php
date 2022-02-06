@@ -50,12 +50,22 @@
                                 </div>
                             </div>
                         </div> <!-- end row -->
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text"
+                                          id="basic-addon3">{{ config('seller.profile_prefix')  }}</span>
+                                    <input type="text" class="form-control" id="slug" name="slug" required
+                                           @if(AUth::user()->slug) readonly @endif
+                                           value="{{ old('slug',AUth::user()->slug) }}" tabindex="2">
+                                </div>
+                            </div>
+                        </div> <!-- end row -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="bio" class="form-label">{{ __('seller::seller.bio') }}</label>
-                                    <textarea class="form-control" id="bio" rows="4" name="bio" tabindex="2"
+                                    <textarea class="form-control" id="bio" rows="4" name="bio" tabindex="3"
                                               placeholder="{{ __('seller::seller.bio_placeholder') }}">{{ old('bio',Auth::user()->bio) }}</textarea>
                                 </div>
                             </div> <!-- end col -->
@@ -69,14 +79,14 @@
                                     <label for="company_name"
                                            class="form-label">{{ __('seller::seller.company_name') }}</label>
                                     <input type="text" class="form-control" id="company_name" name="company_name"
-                                           tabindex="3" value="{{ old('website',Auth::user()->company_name) }}"
+                                           tabindex="4" value="{{ old('website',Auth::user()->company_name) }}"
                                            placeholder="{{ __('seller::seller.company_name_placeholder') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="website" class="form-label">{{ __('seller::seller.website') }}</label>
-                                    <input type="url" class="form-control" id="website" name="website" tabindex="4"
+                                    <input type="url" class="form-control" id="website" name="website" tabindex="5"
                                            value="{{ old('website',Auth::user()->website) }}"
                                            placeholder="{{ __('seller::seller.website_placeholder') }}">
                                 </div>
@@ -84,7 +94,7 @@
                         </div> <!-- end row -->
 
                         <div class="text-end">
-                            <button type="submit" class="btn btn-success mt-2" tabindex="5"><i
+                            <button type="submit" class="btn btn-success mt-2" tabindex="6"><i
                                     class="mdi mdi-content-save"></i> {{ __('seller::seller.save') }}
                             </button>
                         </div>

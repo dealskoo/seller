@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 
 class AccountController extends Controller
@@ -17,13 +15,18 @@ class AccountController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'unique:sellers,name,' . $request->user()->id . ',id']
-        ]);
         $seller = $request->user();
-        $seller->fill($request->only(['name', 'bio', 'company_name', 'website']));
-        if (!$seller->slug) {
-            $seller->slug = Str::slug($request->name, '_');
+        if ($seller->slug) {
+            $request->validate([
+                'name' => ['required', 'unique:sellers,name,' . $request->user()->id . ',id'],
+            ]);
+            $seller->fill($request->only(['name', 'bio', 'company_name', 'website']));
+        } else {
+            $request->validate([
+                'name' => ['required', 'unique:sellers,name,' . $request->user()->id . ',id'],
+                'slug' => ['required', 'regex:/^[\w\d_]+$/i', 'unique:sellers,slug,' . $request->user()->id . ',id'],
+            ]);
+            $seller->fill($request->only(['name', 'bio', 'company_name', 'website', 'slug']));
         }
         $seller->save();
         return back()->with('success', __('seller::seller.update_success'));

@@ -20,9 +20,7 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
 
     Route::get('/locale/{locale}', [LocalizationController::class, '__invoke'])->name('locale');
 
-    Route::get('/banned', function () {
-        return view('seller::auth.banned');
-    })->name('banned');
+    Route::view('/banned', 'seller::auth.banned')->name('banned');
 
     Route::middleware(['guest:seller'])->group(function () {
         Route::get('/', [WelcomeController::class, 'handle'])->name('welcome');
@@ -53,25 +51,19 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
         Route::middleware(['throttle:6,1'])->post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
 
         Route::prefix('/account')->name('account.')->group(function () {
-            Route::get('/', function () {
-                return view('seller::account.profile');
-            })->name('profile');
+            Route::view('/', 'seller::account.profile')->name('profile');
 
             Route::post('/', [AccountController::class, 'store'])->name('profile');
 
             Route::post('/avatar', [AccountController::class, 'avatar'])->name('avatar');
 
-            Route::get('/email', function () {
-                return view('seller::account.email');
-            })->name('email');
+            Route::view('/email', 'seller::account.email')->name('email');
 
             Route::middleware(['throttle:6,1'])->post('/email', [AccountController::class, 'email'])->name('email');
 
             Route::middleware(['signed', 'throttle:6,1'])->get('/email/verify/{hash}', [AccountController::class, 'emailVerify'])->name('email.verify');
 
-            Route::get('/password', function () {
-                return view('seller::account.password');
-            })->name('password');
+            Route::view('/password', 'seller::account.password')->name('password');
 
             Route::post('/password', [AccountController::class, 'password'])->name('password');
         });

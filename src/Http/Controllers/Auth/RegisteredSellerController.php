@@ -29,7 +29,6 @@ class RegisteredSellerController extends Controller
         ]);
 
         $seller = Seller::create([
-            'slug' => Str::slug($request->name, '_'),
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

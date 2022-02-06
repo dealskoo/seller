@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentication;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Laravolt\Avatar\Facade as Avatar;
 
 class Seller extends Authentication implements MustVerifyEmail
@@ -68,5 +69,10 @@ class Seller extends Authentication implements MustVerifyEmail
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = Str::lower($value);
     }
 }
