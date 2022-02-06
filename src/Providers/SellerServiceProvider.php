@@ -9,6 +9,8 @@ use Dealskoo\Seller\Contracts\Dashboard;
 use Dealskoo\Seller\Contracts\Searcher;
 use Dealskoo\Seller\Contracts\Support\DefaultDashboard;
 use Dealskoo\Seller\Contracts\Support\DefaultSearcher;
+use Dealskoo\Seller\Contracts\Support\DefaultWelcome;
+use Dealskoo\Seller\Contracts\Welcome;
 use Dealskoo\Seller\Menu\SellerPresenter;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Menus\Facades\Menu;
@@ -23,6 +25,7 @@ class SellerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/seller.php', 'seller');
+        $this->app->bind(Welcome::class, DefaultWelcome::class);
         $this->app->bind(Dashboard::class, DefaultDashboard::class);
         $this->app->bind(Searcher::class, DefaultSearcher::class);
         $this->app->singleton('seller_menu', function () {
