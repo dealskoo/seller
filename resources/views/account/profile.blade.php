@@ -45,7 +45,7 @@
                                 <div class="mb-3">
                                     <label for="name" class="form-label">{{ __('seller::seller.name') }}</label>
                                     <input type="text" class="form-control" id="name" name="name" required
-                                           value="{{ old('name',AUth::user()->name) }}" autofocus tabindex="1"
+                                           value="{{ old('name',Auth::user()->name) }}" autofocus tabindex="1"
                                            placeholder="{{ __('seller::seller.name_placeholder') }}">
                                 </div>
                             </div>
@@ -56,8 +56,8 @@
                                     <span class="input-group-text"
                                           id="basic-addon3">{{ config('seller.profile_prefix')  }}</span>
                                     <input type="text" class="form-control" id="slug" name="slug" required
-                                           @if(AUth::user()->slug) readonly @endif
-                                           value="{{ old('slug',AUth::user()->slug) }}" tabindex="2">
+                                           @if(Auth::user()->slug) readonly @endif
+                                           value="{{ old('slug',Auth::user()->slug) }}" tabindex="2">
                                 </div>
                             </div>
                         </div> <!-- end row -->
