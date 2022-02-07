@@ -33,7 +33,7 @@
                                         <li @if(!$notification->read_at)class="unread"@endif>
                                             <div class="row">
                                                 <div class="col-lg-10">
-                                                    <a href="{{ route('seller.notification.show',$notification) }}">{{ $notification->data['title'] }}</a>
+                                                    <a href="{{ route('seller.notification.show',$notification) }}">{{ __($notification->data['title']) }}</a>
                                                 </div>
                                                 <div class="col-lg-2">
                                                     <span>{{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span>
