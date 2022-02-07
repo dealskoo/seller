@@ -32,9 +32,6 @@ class AccountController extends Controller
         return back()->with('success', __('seller::seller.update_success'));
     }
 
-    /**
-     * @throws SellerException
-     */
     public function avatar(Request $request)
     {
         $request->validate([
