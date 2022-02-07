@@ -123,7 +123,7 @@
                                         <a href="{{ route('seller.notification.show',$notification) }}"
                                            class="dropdown-item notify-item">
                                             <div class="notify-icon bg-primary">
-                                                <i class="mdi {{ $notification->data['icon'] }}"></i>
+                                                <i class="{{ $notification->data['icon'] }}"></i>
                                             </div>
                                             <p class="notify-details">{{ $notification->data['title'] }}
                                                 @if(empty($notification->data['message']))
