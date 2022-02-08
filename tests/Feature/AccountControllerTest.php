@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 
 class AccountControllerTest extends TestCase
 {
@@ -38,11 +39,13 @@ class AccountControllerTest extends TestCase
 
     public function test_avatar()
     {
+        Storage::fake();
         $seller = Seller::factory()->create();
         $response = $this->actingAs($seller, 'seller')->post(route('seller.account.avatar'), [
             'file' => UploadedFile::fake()->image('file.jpg')
         ]);
         $response->assertStatus(200);
+        Storage::assertExists('seller/avatars/' . $seller->id . '.jpg');
     }
 
     public function test_email()
