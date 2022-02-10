@@ -11,9 +11,7 @@ class SellerController extends AdminController
 {
     public function index(Request $request)
     {
-        if (!$request->user()->canDo('sellers.index')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('sellers.index'), 403);
         if ($request->ajax()) {
             return $this->table($request);
         } else {
@@ -75,27 +73,21 @@ class SellerController extends AdminController
 
     public function show(Request $request, $id)
     {
-        if (!$request->user()->canDo('sellers.show')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('sellers.show'), 403);
         $seller = Seller::query()->findOrFail($id);
         return view('seller::admin.seller.show', ['seller' => $seller]);
     }
 
     public function edit(Request $request, $id)
     {
-        if (!$request->user()->canDo('sellers.edit')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('sellers.edit'), 403);
         $seller = Seller::query()->findOrFail($id);
         return view('seller::admin.seller.edit', ['seller' => $seller]);
     }
 
     public function update(Request $request, $id)
     {
-        if (!$request->user()->canDo('sellers.edit')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('sellers.edit'), 403);
         $seller = Seller::query()->findOrFail($id);
         $seller->status = $request->boolean('status', false);
         $seller->save();
