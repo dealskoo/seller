@@ -45,6 +45,20 @@ class SellerServiceProvider extends ServiceProvider
             $this->commands([
 
             ]);
+
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+
+            $this->publishes([
+                __DIR__ . '/../../config/seller.php' => config_path('seller.php')
+            ], 'config');
+
+            $this->publishes([
+                __DIR__ . '/../../public' => public_path('vendor/seller')
+            ], 'public');
+
+            $this->publishes([
+                __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/seller'),
+            ], 'lang');
         }
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
@@ -52,19 +66,7 @@ class SellerServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'seller');
 
-        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'seller');
-
-        $this->publishes([
-            __DIR__ . '/../../config/seller.php' => config_path('seller.php')
-        ], 'config');
-        $this->publishes([
-            __DIR__ . '/../../public' => public_path('vendor/seller')
-        ], 'public');
-        $this->publishes([
-            __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/seller'),
-        ], 'lang');
 
         Menu::create('seller_navbar', function ($menu) {
             $menu->enableOrdering();
