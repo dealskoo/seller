@@ -2,27 +2,11 @@
 
 namespace Dealskoo\Seller\Tests;
 
-use Dealskoo\Seller\Facades\SellerMenu;
 use Dealskoo\Seller\Models\Seller;
-use Dealskoo\Seller\Providers\SellerServiceProvider;
 use Dealskoo\Seller\Tests\Http\Kernel;
 
 abstract class TestCase extends \Dealskoo\Admin\Tests\TestCase
 {
-    protected function getPackageProviders($app)
-    {
-        return [
-            SellerServiceProvider::class
-        ];
-    }
-
-    protected function getPackageAliases($app)
-    {
-        return [
-            'SellerMenu' => SellerMenu::class
-        ];
-    }
-
     protected function getEnvironmentSetUp($app)
     {
         parent::getEnvironmentSetUp($app);
@@ -46,10 +30,5 @@ abstract class TestCase extends \Dealskoo\Admin\Tests\TestCase
     protected function resolveApplicationHttpKernel($app)
     {
         $app->singleton(\Illuminate\Contracts\Http\Kernel::class, Kernel::class);
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
     }
 }
