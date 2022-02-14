@@ -51,6 +51,5 @@ abstract class TestCase extends \Dealskoo\Admin\Tests\TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 }
