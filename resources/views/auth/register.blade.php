@@ -40,7 +40,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="country" class="form-label">{{ __('seller::seller.target_market') }}</label>
-                    <select name="country_id" id="country" class="form-select">
+                    <select name="country_id" id="country" class="form-control select2" data-toggle="select2">
                         @foreach($countries as $country)
                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                         @endforeach
