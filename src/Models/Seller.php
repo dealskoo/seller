@@ -4,7 +4,7 @@ namespace Dealskoo\Seller\Models;
 
 use Dealskoo\Seller\Notifications\ResetSellerPassword;
 use Dealskoo\Seller\Notifications\VerifySellerEmail;
-use Dealskoo\Country\Traits\Country;
+use Dealskoo\Country\Traits\HasCountry;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,7 +16,7 @@ use Laravolt\Avatar\Facade as Avatar;
 
 class Seller extends Authentication implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, SoftDeletes, Country;
+    use HasFactory, Notifiable, SoftDeletes, HasCountry;
 
     protected $appends = ['avatar_url'];
 
