@@ -2,12 +2,7 @@
 
 namespace Dealskoo\Seller\Events;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
+use Dealskoo\Seller\Models\Seller;
 use Illuminate\Queue\SerializesModels;
 
 class SellerPasswordReset
@@ -16,7 +11,7 @@ class SellerPasswordReset
 
     public $seller;
 
-    public function __construct($seller)
+    public function __construct(Seller $seller)
     {
         $this->seller = $seller;
     }
