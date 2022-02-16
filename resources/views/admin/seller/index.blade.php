@@ -48,7 +48,7 @@
 @section('script')
     <script type="text/javascript">
         $(function () {
-            $('#sellers_table').dataTable({
+            let table = $('#sellers_table').dataTable({
                 "processing": true,
                 "serverSide": true,
                 "ajax": "{{ route('admin.sellers.index') }}",
@@ -72,7 +72,7 @@
                     $('#sellers_table tr td:nth-child(2)').addClass('table-user');
                     $('#sellers_table tr td:nth-child(10)').addClass('table-action');
                 }
-            })
+            });
         });
     </script>
 @endsection
