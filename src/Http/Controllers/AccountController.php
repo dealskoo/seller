@@ -2,7 +2,6 @@
 
 namespace Dealskoo\Seller\Http\Controllers;
 
-use Dealskoo\Seller\Exceptions\SellerException;
 use Dealskoo\Seller\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
