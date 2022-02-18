@@ -73,4 +73,5 @@ return [
     'status' => 'Status',
     'auth_title' => 'Welcome to the seller center!',
     'auth_description' => 'Committed to providing sellers with marketing solutions',
+    'sellers_management' => 'Sellers Management',
 ];

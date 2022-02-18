@@ -73,4 +73,5 @@ return [
     'status' => '状态',
     'auth_title' => '欢迎登录卖家中心！',
     'auth_description' => '致力于为卖家提供营销解决方案',
+    'sellers_management' => '商家管理',
 ];
