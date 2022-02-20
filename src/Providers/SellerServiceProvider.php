@@ -29,9 +29,13 @@ class SellerServiceProvider extends ServiceProvider
         $this->app->bind(Dashboard::class, DefaultDashboard::class);
         $this->app->bind(Searcher::class, DefaultSearcher::class);
         $this->app->singleton('seller_menu', function () {
+            Menu::create('seller_navbar', function ($menu) {
+                $menu->enableOrdering();
+                $menu->setPresenter(SellerPresenter::class);
+                $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
+            });
             return Menu::instance('seller_navbar');
         });
-
     }
 
     /**
@@ -67,12 +71,6 @@ class SellerServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'seller');
 
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'seller');
-
-        Menu::create('seller_navbar', function ($menu) {
-            $menu->enableOrdering();
-            $menu->setPresenter(SellerPresenter::class);
-            $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
-        });
 
         AdminMenu::dropdown('seller::seller.sellers_management', function ($menu) {
             $menu->route('admin.sellers.index', 'seller::seller.sellers', [], ['permission' => 'sellers.index'])->order(1);
