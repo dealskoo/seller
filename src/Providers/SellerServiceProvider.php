@@ -34,6 +34,7 @@ class SellerServiceProvider extends ServiceProvider
                 $menu->setPresenter(SellerPresenter::class);
                 $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
             });
+
             return Menu::instance('seller_navbar');
         });
     }
