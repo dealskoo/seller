@@ -339,11 +339,11 @@
 <script src="{{ asset('/vendor/seller/js/vendor/apexcharts.min.js') }}"></script>
 <script src="{{ asset('/vendor/seller/js/vendor/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ asset('/vendor/seller/js/vendor/jquery-jvectormap-world-mill-en.js') }}"></script>
-<script src="{{ asset('/vendor/admin/js/vendor/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('/vendor/admin/js/vendor/dataTables.bootstrap5.js') }}"></script>
-<script src="{{ asset('/vendor/admin/js/vendor/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('/vendor/admin/js/vendor/responsive.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('/vendor/admin/js/vendor/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('/vendor/seller/js/vendor/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/vendor/seller/js/vendor/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('/vendor/seller/js/vendor/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('/vendor/seller/js/vendor/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('/vendor/seller/js/vendor/dataTables.select.min.js') }}"></script>
 <script type="text/javascript">
     let language = {
         "aria": "",
@@ -357,7 +357,7 @@
         "infoEmpty": "{{ __('seller::seller.datatable_info_empty') }}",
         "infoFiltered": "{{ __('seller::seller.datatable_filtered') }}",
         "search": "{{ __('seller::seller.search') }}",
-        "lengthMenu": "{{ __('admin::seller.display') }} <select class='form-select form-select-sm ms-1 me-1'><option value='10'>10</option><option value='20'>20</option></select> {{ __('seller::seller.entries') }}",
+        "lengthMenu": "{{ __('seller::seller.display') }} <select class='form-select form-select-sm ms-1 me-1'><option value='10'>10</option><option value='20'>20</option></select> {{ __('seller::seller.entries') }}",
     };
     let pageLength = 10;
 </script>
