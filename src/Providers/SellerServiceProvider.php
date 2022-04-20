@@ -73,12 +73,9 @@ class SellerServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'seller');
 
-        AdminMenu::dropdown('seller::seller.sellers_management', function ($menu) {
-            $menu->route('admin.sellers.index', 'seller::seller.sellers', [], ['permission' => 'sellers.index'])->order(1);
-        }, ['icon' => 'uil-shop', 'permission' => 'sellers.management'])->order(5);
+        AdminMenu::route('admin.sellers.index', 'seller::seller.sellers', [], ['icon' => 'uil-shop','permission' => 'sellers.index'])->order(5);
 
-        PermissionManager::add(new Permission('sellers.management', 'Sellers Management'));
-        PermissionManager::add(new Permission('sellers.index', 'Sellers List'), 'sellers.management');
+        PermissionManager::add(new Permission('sellers.index', 'Sellers List'));
         PermissionManager::add(new Permission('sellers.show', 'View Seller'), 'sellers.index');
         PermissionManager::add(new Permission('sellers.edit', 'Edit Seller'), 'sellers.index');
     }
