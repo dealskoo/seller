@@ -11,6 +11,7 @@ use Dealskoo\Seller\Contracts\Support\DefaultDashboard;
 use Dealskoo\Seller\Contracts\Support\DefaultSearcher;
 use Dealskoo\Seller\Contracts\Support\DefaultWelcome;
 use Dealskoo\Seller\Contracts\Welcome;
+use Dealskoo\Seller\Facades\SellerMenu;
 use Dealskoo\Seller\Menu\SellerPresenter;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Menus\Facades\Menu;
@@ -32,7 +33,6 @@ class SellerServiceProvider extends ServiceProvider
             Menu::create('seller_navbar', function ($menu) {
                 $menu->enableOrdering();
                 $menu->setPresenter(SellerPresenter::class);
-                $menu->route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
             });
 
             return Menu::instance('seller_navbar');
@@ -78,5 +78,7 @@ class SellerServiceProvider extends ServiceProvider
         PermissionManager::add(new Permission('sellers.index', 'Sellers List'));
         PermissionManager::add(new Permission('sellers.show', 'View Seller'), 'sellers.index');
         PermissionManager::add(new Permission('sellers.edit', 'Edit Seller'), 'sellers.index');
+
+        SellerMenu::route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
     }
 }
