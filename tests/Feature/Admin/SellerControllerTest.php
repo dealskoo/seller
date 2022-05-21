@@ -59,7 +59,7 @@ class SellerControllerTest extends TestCase
         $admin = Admin::factory()->isOwner()->create();
         $seller = Seller::factory()->create();
         $response = $this->actingAs($admin, 'admin')->get(route('admin.sellers.login', $seller));
-        $this->assertAuthenticated('seller');
+        $this->assertAuthenticatedAs($seller, 'seller');
         $response->assertRedirect(route('seller.dashboard'));
     }
 }
