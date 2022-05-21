@@ -106,6 +106,6 @@ class SellerController extends AdminController
         abort_if(!$request->user()->canDo('sellers.login'), 403);
         $seller = Seller::query()->findOrFail($id);
         Auth::guard('seller')->login($seller);
-        return redirect(route('seller.welcome'));
+        return redirect(route('seller.dashboard'));
     }
 }
