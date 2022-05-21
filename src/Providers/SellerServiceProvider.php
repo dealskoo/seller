@@ -78,6 +78,7 @@ class SellerServiceProvider extends ServiceProvider
         PermissionManager::add(new Permission('sellers.index', 'Sellers List'));
         PermissionManager::add(new Permission('sellers.show', 'View Seller'), 'sellers.index');
         PermissionManager::add(new Permission('sellers.edit', 'Edit Seller'), 'sellers.index');
+        PermissionManager::add(new Permission('sellers.login', 'Login Seller'), 'sellers.index');
 
         SellerMenu::route('seller.dashboard', 'seller::seller.dashboard', [], ['icon' => 'uil-dashboard me-1']);
     }

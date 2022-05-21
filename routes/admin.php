@@ -11,6 +11,7 @@ Route::middleware(['web', 'admin_locale'])->prefix(config('admin.route.prefix'))
 
     Route::middleware(['auth:admin', 'admin_active'])->group(function () {
         Route::resource('sellers', SellerController::class)->except(['create', 'store', 'destroy']);
+        Route::get('sellers/login/{id}',[SellerController::class,'login'])->name('sellers.login');
     });
 
 });

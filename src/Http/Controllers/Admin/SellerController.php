@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Dealskoo\Seller\Models\Seller;
 use Dealskoo\Admin\Http\Controllers\Controller as AdminController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SellerController extends AdminController
 {
@@ -39,6 +40,7 @@ class SellerController extends AdminController
         $rows = [];
         $can_view = $request->user()->canDo('sellers.show');
         $can_edit = $request->user()->canDo('sellers.edit');
+        $can_login = $request->user()->canDo('sellers.login');
         foreach ($sellers as $seller) {
             $row = [];
             $row[] = $seller->id;
@@ -51,6 +53,11 @@ class SellerController extends AdminController
             $row[] = Carbon::parse($seller->created_at)->format('Y-m-d H:i:s');
             $row[] = Carbon::parse($seller->updated_at)->format('Y-m-d H:i:s');
 
+            $login_link = '';
+            if ($can_login) {
+                $login_link = '<a href="' . route('admin.sellers.login', $seller) . '" class="action-icon" target="_blank"><i class="mdi mdi-view-dashboard"></i></a>';
+            }
+
             $view_link = '';
             if ($can_view) {
                 $view_link = '<a href="' . route('admin.sellers.show', $seller) . '" class="action-icon"><i class="mdi mdi-eye"></i></a>';
@@ -60,7 +67,7 @@ class SellerController extends AdminController
             if ($can_edit) {
                 $edit_link = '<a href="' . route('admin.sellers.edit', $seller) . '" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>';
             }
-            $row[] = $view_link . $edit_link;
+            $row[] = $login_link . $view_link . $edit_link;
             $rows[] = $row;
         }
         return [
@@ -92,5 +99,13 @@ class SellerController extends AdminController
         $seller->status = $request->boolean('status', false);
         $seller->save();
         return back()->with('success', __('admin::admin.update_success'));
+    }
+
+    public function login(Request $request, $id)
+    {
+        abort_if(!$request->user()->canDo('sellers.login'), 403);
+        $seller = Seller::query()->findOrFail($id);
+        Auth::guard('seller')->login($seller);
+        return redirect(route('seller.welcome'));
     }
 }

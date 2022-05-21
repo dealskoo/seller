@@ -53,4 +53,13 @@ class SellerControllerTest extends TestCase
         $seller->refresh();
         $this->assertEquals(false, $seller->status);
     }
+
+    public function test_login()
+    {
+        $admin = Admin::factory()->isOwner()->create();
+        $seller = Seller::factory()->create();
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.sellers.login', $seller));
+        $this->assertAuthenticated('seller');
+        $response->assertRedirect(route('seller.welcome'));
+    }
 }
