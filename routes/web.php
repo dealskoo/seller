@@ -16,7 +16,7 @@ use Dealskoo\Seller\Http\Controllers\SearchController;
 use Dealskoo\Seller\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
+Route::middleware(['web', 'seller_locale', 'affiliate'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
 
     Route::get('/locale/{locale}', [LocalizationController::class, '__invoke'])->name('locale');
 
