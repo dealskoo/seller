@@ -33,5 +33,6 @@ class Kernel extends HttpKernel
         'seller_locale' => SellerLocalization::class,
         'admin_active' => \Dealskoo\Admin\Http\Middleware\ActiveAuth::class,
         'seller_active' => \Dealskoo\Seller\Http\Middleware\ActiveAuth::class,
+        'affiliate' => \Dealskoo\Affiliate\Http\Middleware\Affiliate::class,
     ];
 }
