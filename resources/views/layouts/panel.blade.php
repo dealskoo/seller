@@ -256,7 +256,7 @@
                         <div class="text-md-end footer-links d-none d-md-block">
                             @foreach(config('seller.footer_menus') as $menu)
                                 <a target="_blank" href="{{ route($menu['url']) }}">
-                                    {{ __('seller::seller.'.$menu['name']) }}
+                                    {{ __($menu['name']) }}
                                 </a>
                             @endforeach
                         </div>
