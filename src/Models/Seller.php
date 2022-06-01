@@ -12,11 +12,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentication;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 use Laravolt\Avatar\Facade as Avatar;
 
 class Seller extends Authentication implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, SoftDeletes, HasCountry, HasSlug;
+    use HasFactory, Notifiable, SoftDeletes, HasCountry, HasSlug, Searchable;
 
     protected $appends = ['avatar_url'];
 
@@ -64,5 +65,24 @@ class Seller extends Authentication implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifySellerEmail());
+    }
+
+    public function shouldBeSearchable()
+    {
+        return $this->status;
+    }
+
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'slug',
+            'name',
+            'bio',
+            'email',
+            'country_id',
+            'company_name',
+            'website',
+            'source'
+        ]);
     }
 }
